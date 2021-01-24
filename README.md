@@ -82,9 +82,18 @@ vue-cli로 front-end 폴더에 front-end 뼈대 생성
 vue create front-end
 
 
-## 실행
+## front-end APP 실행
 front-end 폴더에서 
 npm run serve
+
+## Commands
+- npm run serve     : front-end App execute
+- npm run build     : front-end App build
+- npm run test:unit : front-end App unit test
+- npm run test:e2e  : front-end App e2e test
+- npm run lint      : front-end App lint
+- npm run test      : front-end App unit and e2e test"
+  npm run test는 npm test로 실행가능
 
 ## Troubleshooting
 현상1 : node version 8.12.0, npm version 6.4.1 인 상태에서 vue-cli로 front-end 뼈대를 
