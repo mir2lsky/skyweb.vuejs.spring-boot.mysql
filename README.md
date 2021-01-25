@@ -95,6 +95,9 @@ npm run serve
 - npm run test      : front-end App unit and e2e test"
   npm run test는 npm test로 실행가능
 
+## test(unit/e23 test)
+npm test
+
 ## Troubleshooting
 현상1 : node version 8.12.0, npm version 6.4.1 인 상태에서 vue-cli로 front-end 뼈대를 
        생성했으나 chromdriver 플러그인에서 오류가 발생함.
