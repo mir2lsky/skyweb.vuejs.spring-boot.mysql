@@ -8,10 +8,9 @@ export default {
         console.dir('*** registrationService.register : resolve : data.result => ' + data.result)
         resolve(data)
       }).catch((error) => {
-        console.dir('***registrationService.register : reject => ' + error)
+        console.dir('*** registrationService.register : reject => ' + error)
         reject(error)
       })
-      // resolve()
     })
   }
 }
