@@ -7,7 +7,7 @@
 	<artifactId>app</artifactId>
   <version>0.0.1-SNAPSHOT</version>
 
-	<name>TaskAgile</name>
+	<name>SkyWeb Task Agile</name>
 	<description>Open source task management tool</description>
 
 	<properties>
@@ -19,7 +19,7 @@
 	<parent>
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>
-		<version>2.4.2</version>
+		<version>2.0.4.RELEASE</version>
 		<relativePath/> <!-- lookup parent from repository -->
   </parent>
 
@@ -40,6 +40,10 @@
       <groupId>mysql</groupId>
       <artifactId>mysql-connector-java</artifactId>
     </dependency>
+    <dependency>
+      <groupId>org.apache.commons</groupId>
+      <artifactId>commons-lang3</artifactId>
+    </dependency>
 
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
@@ -52,6 +56,7 @@
 			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
     </dependency>
+
 
 	</dependencies>
 

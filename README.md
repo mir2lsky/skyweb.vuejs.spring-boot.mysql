@@ -154,3 +154,51 @@ mvn install
 
 기존 빌드를 깨끗이 삭제하고 빌드(권장)
 mvn clean install
+
+
+# 중요 변경 사항 
+폼과 검증관련 내용을 진행하다가 현재 작업 중인 app의 spring boot 버전이 2.4.2인 이유로 책과
+다른 점이 발견되어 기존 샘플 예제의 버전인 2.0.4로 내림
+최신 버전으로 진행하면서 문제를 해결하는 게 좋은 방향이지만 중간에 시간을 허비하는 것 보다는 일단
+돌아가는 것을 빨리 구현해 보는게 낫다고 판단함.
+
+2.0.4로 다운 그레이드 하는 과정에서 아래와 같이 오류가 발생하여 한참을 헤맸는데
+```
+spring-boot-starter-parent관련 모듈을 다운로드 하는 과정에서 발생한 오류  
+Could not find artifact org.springframework.boot:spring-boot-starter-parent:pom:2.0.2 in central (https://repo.maven.apache.org/maven2) and 'parent.relativePath' points at no local POM @ line 19, column 10
+```
+원인은 허탈하게도 버전 명칭을 2.0.4.RELEAASE로 정확하게 기술하지 않았기 때문이다.
+<version>2.0.4.RELEASE</version>
+기존 2.4.2 버전은 뒤에 RELEASE가 없었기 때문에 생각도 못한 원인이었다.
+(기존 샘플 app로 실행했더니 정상 다운로그가 되는 것을 보고 pom.xml간에 비교하는 과정에서 발견함.)
+TaskAgileApplicationTests.java에서 나는 오류는 해당 버전의 test 패키지가 달라서 나는 오류이므로
+맞춰주면 된다.
+
+## troubleshooting
+* 오류 해결 사항 1, 2는 spring-boot-starter-parent 2.4.2 버전을 사용시 발생하는 오류들임
+1. Validation 관련 테스트 클래스 생성시 javax.validation 패키지를 찾을 수 없다는 아래 메시지 표시
+The import javax.validation cannot be resolved
+
+=> spring 2.3 이상 버전에서 import javax.validation을 사용하려하면 에러가 생긴다.
+
+spring 2.3 미만 버전에서는 아래와 같이 Web-starter가 Validation-starter을 가져왔으나
+spring boot -> web -> validation
+spring 2.3이상 버전에서는 더이상 가져오지 않는다. 
+초기 프로젝트를 생성할 때 validation 의존성을 설정하거나 pom.xml에 의존성을 추가해주어야 한다.
+
+<!-- pom.xml -->
+<dependency>
+     <groupId>org.springframework.boot</groupId>
+     <artifactId>spring-boot-starter-validation</artifactId>
+</dependency>
+
+2. 단위 테스트에서 @Before를 사용하기 위한 패키지인 org.junit.before 를 찾을 수 없어서 오류
+
+=> pom.xml에 junit의 의존성을 아래와 같이 추가해서 해결
+    <dependency>
+      <groupId>junit</groupId>
+      <artifactId>junit</artifactId>
+      <version>4.12</version>
+      <scope>test</scope>
+    </dependency>
+
