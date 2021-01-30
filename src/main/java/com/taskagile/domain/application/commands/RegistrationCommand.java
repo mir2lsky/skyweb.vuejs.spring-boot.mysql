@@ -2,6 +2,9 @@ package com.taskagile.domain.application.commands;
 
 import org.springframework.util.Assert;
 
+/* =============================
+       회원가입 관련 VO
+================================ */
 public class RegistrationCommand {
   private String username;
   private String emailAddress;

@@ -4,6 +4,9 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.util.Assert;
 
+/* =============================================
+    http response 객체에 Api실행 결과를 담는 역할
+================================================ */
 public final class Result {
 
   private Result() {

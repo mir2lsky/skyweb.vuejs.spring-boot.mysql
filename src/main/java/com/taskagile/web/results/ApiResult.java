@@ -4,6 +4,9 @@ import java.util.HashMap;
 
 import org.springframework.util.Assert;
 
+/* ==========================================
+       API 실행 결과를 담는 HashMap 타입 객체
+============================================= */
 public class ApiResult extends HashMap<String, Object> {
 
   private static final long serialVersionUID = 877825499039674411L;
