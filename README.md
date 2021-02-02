@@ -1,6 +1,17 @@
 # TaskAgile
 
 Open source task management tool built with Vue.js 2.4.2, Spring Boot 2, and MySQL 5.7+
+
+# 개발환경 
+
+### Back-end 
+- Spring-boot v2.0.4.RELEASE    
+- MySQL 5.7+
+
+### Front-end
+- node v10.23.1 
+- Vue.js 2 + vue/cli v4.5.11
+
 * 환경설정 부분은 너무 내용이 많아서 별도 문서에 정리함.
  
 ---
@@ -157,8 +168,7 @@ mvn clean install
 
 
 # 중요 변경 사항 
-폼과 검증관련 내용을 진행하다가 현재 작업 중인 app의 spring boot 버전이 2.4.2인 이유로 책과
-다른 점이 발견되어 기존 샘플 예제의 버전인 2.0.4로 내림
+폼과 검증관련 내용을 진행하다가 현재 작업 중인 app의 spring boot 버전이 2.4.2인 이유로 책과 다른 점이 발견되어 기존 샘플 예제의 버전인 2.0.4로 내림
 최신 버전으로 진행하면서 문제를 해결하는 게 좋은 방향이지만 중간에 시간을 허비하는 것 보다는 일단
 돌아가는 것을 빨리 구현해 보는게 낫다고 판단함.
 

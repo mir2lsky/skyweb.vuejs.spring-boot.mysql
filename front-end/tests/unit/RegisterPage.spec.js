@@ -1,21 +1,19 @@
-// import Vue from 'vue'
-import { mount, createLocalVue, shallowMount } from '@vue/test-utils'
+import { mount, createLocalVue } from '@vue/test-utils'
 import RegisterPage from '@/views/RegisterPage'
 import VueRouter from 'vue-router'
 import Vuelidate from 'vuelidate'
 import registrationService from '@/services/registration'
 
-//vm.$router 에 접근 할 수 있도록 테스트에 Vue Router 추가
+// vm.$router 에 접근 할 수 있도록 테스트에 Vue Router 추가
 const localVue = createLocalVue()
 localVue.use(VueRouter)
 localVue.use(Vuelidate)
 const router = new VueRouter()
 
-//registrationService의 mock인  /__mocks__/index.js가 실행되도록 설정
+// registrationService의 mock인  /__mocks__/registration.js가 실행되도록 설정
 jest.mock('@/services/registration')
 
 describe('RegisterPage.vue', () => {
-
   let wrapper
   let fieldUsername
   let fieldEmailAddress
@@ -46,7 +44,7 @@ describe('RegisterPage.vue', () => {
     jest.restoreAllMocks()
   })
 
-  //--------- registration form test ----------------------------------
+  // --------- registration form test ----------------------------------
   it('should render registration form', () => {
     expect(wrapper.find('.logo').attributes().src)
       .toEqual('/static/images/logo.png')
@@ -64,44 +62,48 @@ describe('RegisterPage.vue', () => {
     expect(wrapper.vm.form.password).toEqual('')
   })
 
-  it('should have from inputs bound with data model', () => {
+  it('should have from inputs bound with data model', async () => {
     const username = 'sunny'
     const emailAddress = 'sunny@taskagile.com'
     const password = 'VueJsRocks!'
 
-    // console.log('wrapper.vm.form.username(before) : ' + wrapper.vm.form.username)
-    // console.log('fieldUsername.element.value(before) : ' + fieldUsername.element.value)
-    wrapper.vm.form.username = username
-    // console.log('wrapper.vm.form.username(after) : ' + wrapper.vm.form.username)
-    // console.log('fieldUsername.element.value(after) : ' + fieldUsername.element.value)
-    wrapper.vm.form.emailAddress = emailAddress
-    wrapper.vm.form.password = password
+    // ★ wrapper.vm.form.username에 대한 값 설정이 안 되는 문제
+    // 그래서 fieldUsername.element.value의 값이 old값을 가지고 있으므로
+    // 아래의 toEqual문장에서 오류 발생
+    // 원래는 아래 코드와 같이 vm의 모델을 수정하면 양방향 연결이 되어 있기 때문에
+    // DOM의 fieleUsername을 통해 수정된 값을 읽어야 되는데 동작이 안됨.
+    // 이유는 Vue-test util의 old 버전에서만 동작하는 코드로 추정됨.
+    // 해결 방법은 아래와 같이 wrapper.setData()함수를 이용하여 설정해야 한다.
+    // 주의할 점은 async..await을 사용해야만 설정이 정상 동작한다.
+    // --- 아래 코드는 동작하지 않는다.
+    // wrapper.vm.form.username = username
+    // wrapper.vm.form.emailAddress = emailAddress
+    // wrapper.vm.form.password = password
+    await wrapper.setData({
+      form: {
+        username: username,
+        emailAddress: emailAddress,
+        password: password
+      }
+    })
 
-    // ★ fieldUsername.element.value의 값이 old값을 가지고 있어서 오류
-    // 즉, vm의 모델을 수정하면 양방향 연결이 되어 있기 때문에 DOM의 fieleUsername도
-    // 수정되어야 하는데 안되는 건지, 못 읽어 오는지 어쨋든 동작이 안됨.
-    // 오류가 나서 일단 통과하도록 처리함
-    // expect(fieldUsername.element.value).toEqual(username)
-    // expect(fieldEmailAddress.element.value).toEqual(emailAddress)
-    // expect(fieldPassword.element.value).toEqual(password)
-    //console.log('fieldUsername.element.value : ' + fieldUsername.element.value)
-    expect(fieldUsername.element.value).toEqual('')
-    expect(fieldEmailAddress.element.value).toEqual('')
-    expect(fieldPassword.element.value).toEqual('')
+    expect(fieldUsername.element.value).toEqual(username)
+    expect(fieldEmailAddress.element.value).toEqual(emailAddress)
+    expect(fieldPassword.element.value).toEqual(password)
   })
 
   it('should have form submit event handler `submitForm`', () => {
     const stub = jest.fn()
-    wrapper.setMethods({submitForm: stub})
+    wrapper.setMethods({ submitForm: stub })
     buttonSubmit.trigger('submit')
     expect(stub).toBeCalled()
   })
 
-  //--------- new user test ----------------------------------
-  //it('should register when it is a new user', async () => {
+  // --------- new user test ----------------------------------
+  // it('should register when it is a new user', async () => {
   it('should register when it is a new user', async () => {
     expect.assertions(2)
-    const stub = jest.fn();
+    const stub = jest.fn()
     wrapper.vm.$router.push = stub
     wrapper.vm.form.username = 'sunny'
     wrapper.vm.form.emailAddress = 'sunny@taskagile.com'
@@ -119,8 +121,7 @@ describe('RegisterPage.vue', () => {
     // 오류를 발견하는 문제를 방지하고 프로미스가 호출되고 결과를 반환할 때까지
     // 기다린다.
     await wrapper.vm.$nextTick()
-    expect(stub).toHaveBeenCalledWith({ name: 'LoginPage' })
-
+    expect(stub).toHaveBeenCalledWith({ name: 'login' })
   })
 
   it('should fail it is not a new user', async () => {
@@ -144,7 +145,7 @@ describe('RegisterPage.vue', () => {
     wrapper.vm.form.emailAddress = 'bad-email-address'
     wrapper.vm.form.password = 'JestRocks!'
     wrapper.vm.submitForm()
-    expect(registerSpy).not.toHaveBeenCalled();
+    expect(registerSpy).not.toHaveBeenCalled()
   })
 
   it('should fail when the username is invalid', () => {

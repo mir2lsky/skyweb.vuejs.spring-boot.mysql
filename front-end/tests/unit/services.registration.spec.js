@@ -11,53 +11,56 @@ describe('services/registration', () => {
   })
 
   // --- moxios를 이용한 register 서비스 검증하기 내부 처리 설명 ---
-  // moxis는 axios의 요청을 가로채는 mock 객체 역할을 수행
-  // unit test는 서버로 요청을 정상적으로 하는지만 확인하고 예상된 응담에 대해서
-  // 대응처리만 테스트하면 되므로 moxis는 unit test에서만 사용된다.
-  // 실제 back-end로 요청하고 결과를 받는 것은 e2e테스트에서 처리한다.
-  // moxios.wait(callback)가 실행되면 axis의 호출을 대기하고 있다가
-  // axis 호출이 발생하면 request를 가로채서 callback에서 가짜 응답을 생성해서 리턴함
-  // register서비스는 axios를 이용해서 request를 보내지만 moxios가 가료채서
-  // 리턴한 결과를 받아서 다시 호출한 측에 돌려주고 아래의 return 문에 존재하는 then()
-  // 에서 결과를 확인하는 테스트를 수행
+  // moxis는 실제 서비스의 axios 요청을 가로채는 mock 객체 역할을 수행
+  // cf) RegistPage.spec.js에서 사용하는 __mock__폴더의 Registration.js에서
+  //     수행하는 mock 객체와 다르다.
+  //     RegistPage.spec.js는 form 내용의 검증 및 서비스를 정상적인 파라미터로
+  //     호출하는지 여부만 테스트한다.
+  // serveces.registration.spec.js는 서비스의 request가 성공이나 실패한 경우
+  // 예상되는 response에 대하여 moxios를 이용하여 테스트한다.
+  // (실제 back-end로 요청하고 결과를 받는 것은 e2e테스트에서 처리한다.)
+  // moxios.wait(callback)가 실행되면 axios의 요청을 대기하고 있다가
+  // registrationService.register() 호출을 통해 axios 요청이 발생하면
+  // moxios가 그 요청을 가로채서 callback에 정의된 가짜 응답을  리턴하고
+  // register서비스의 axios는 가짜 응답을 받아서 호출한 측에 돌려준다.
+  // 그러면 호출한 측의 then() 에서 결과를 받아서 확인하는 테스트를 수행한다.
   // 아래 console log의 2, 4번은 resister서비스에서 실행됨
   // 에러 확인 테스트도 동일한 처리흐름으로 실행된다.
   it('should pass the response to caller when request succeeded', () => {
     expect.assertions(2)
-    console.log('===1. it SUCCESS procsss')
+    console.log('=== 1. it SUCCESS test')
     moxios.wait(() => {
-      let request = moxios.requests.mostRecent()
+      const request = moxios.requests.mostRecent()
       expect(request).toBeTruthy()
-      console.log('===3. moxis SUCCESS procsss')
+      console.log('=== 3. moxis SUCCESS procsss')
       request.respondWith({
         status: 200,
-        response: {result: 'success'}
+        response: { result: 'success(from moxios)' }
       })
     })
 
     return registrationService.register().then(data => {
       console.dir('=== 5.moxios rtn : data.result ' + data.result)
-      expect(data.result).toEqual('success')
+      expect(data.result).toEqual('success(from moxios)')
     })
   })
 
   it('should propagate the error to caller when request failed', () => {
     expect.assertions(2)
-    console.log('=== it ERROR procsss')
+    console.log('=== 1. it ERROR test')
     moxios.wait(() => {
-      let request = moxios.requests.mostRecent()
+      const request = moxios.requests.mostRecent()
       expect(request).toBeTruthy()
-      console.log('=== moxis ERROR procsss')
+      console.log('=== 3. moxis ERROR procsss')
       request.reject({
         status: 400,
-        response: {message: 'Bad request'}
+        response: { message: 'Bad request' }
       })
     })
 
     return registrationService.register().catch(error => {
-      console.dir('=== moxios rtn : error : ' + error.response.message)
+      console.dir('=== 5. moxios rtn : error : ' + error.response.message)
       expect(error.response.message).toEqual('Bad request')
     })
   })
-
 })
