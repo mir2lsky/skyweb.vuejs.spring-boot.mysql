@@ -1,5 +1,10 @@
 import errorParser from '@/utils/error-parser'
 
+// error 내용을 일반 객체({})에 담을 수도 있지만 아래와 같이
+// response라는 이름의 객체로 생성하고 errorParser를 통해
+// 파싱하여 parsed.message와 같이 단수한 형태로 접근 가능하다
+// cf) moxios는 error-parser가 내장되어 자동으로 처리해 주지만
+//  실제 axios를 사용할 때는 error-parser를 이용해서 파싱처리가 필요
 describe('utils/error-parser', () => {
   it('should parse HTTP 400 error', () => {
     const error = {

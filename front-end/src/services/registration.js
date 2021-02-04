@@ -1,4 +1,5 @@
 import axios from 'axios'
+import errorParser from '@/utils/error-parser'
 
 export default {
   register (detail) {
@@ -9,7 +10,8 @@ export default {
         resolve(data)
       }).catch((error) => {
         console.dir('*** 4. registrationService.register : reject => ' + error)
-        reject(error)
+        // reject(error)
+        reject(errorParser.parse(error))
       })
     })
   }

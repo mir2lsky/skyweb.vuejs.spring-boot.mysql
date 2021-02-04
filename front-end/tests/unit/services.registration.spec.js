@@ -53,14 +53,21 @@ describe('services/registration', () => {
       expect(request).toBeTruthy()
       console.log('=== 3. moxis ERROR procsss')
       request.reject({
-        status: 400,
-        response: { message: 'Bad request' }
+        // status: 400,
+        // response: { message: 'Bad request' }
+        response: {
+          status: 400,
+          data: { message: 'Bad request' }
+        }
       })
     })
 
     return registrationService.register().catch(error => {
-      console.dir('=== 5. moxios rtn : error : ' + error.response.message)
-      expect(error.response.message).toEqual('Bad request')
+      console.dir('=== 5. moxios rtn : error : ' + error.message)
+      // error를 response라는 이름의 객체에 담으면 내부의 data를 생략하고 바로
+      // data의 속성을 읽을 수 있다.
+      // expect(error.response.message).toEqual('Bad request')
+      expect(error.message).toEqual('Bad request')
     })
   })
 

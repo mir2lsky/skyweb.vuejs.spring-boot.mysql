@@ -49,6 +49,10 @@ describe('services/authentication', () => {
       const request = moxios.requests.mostRecent()
       expect(request).toBeTruthy()
       request.reject({
+        // old : error 내용을 일반 객체로 생성
+        // status: 400
+        // response: { message: 'Bad request' }
+        // new : error 내용을 가지는 response 객체 생성
         response: {
           status: 400,
           data: { message: 'Bad request' }
@@ -57,6 +61,13 @@ describe('services/authentication', () => {
     })
 
     return authenticationService.authenticate().catch(error => {
+      // error객체에 response라는 이름의 객체로 담기면 내부의 data를 생략하고 바로
+      // data의 속성을 읽을 수 있다.
+      // cf) moxios는 error 내용에 response가 있으면 자동으로 파싱해 주지만
+      //     실제 axios를 사용할 때는 error-parser를 이용해서 파싱처리가 필요
+      // old code
+      // expect(error.response.message).toEqual('Bad request')
+      // new code
       expect(error.message).toEqual('Bad request')
     })
   })
