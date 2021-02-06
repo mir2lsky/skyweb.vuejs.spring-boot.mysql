@@ -3,19 +3,19 @@
     <!-- logo area -->
     <div class="logo" @click="goHome()">
       <font-awesome-icon icon="home" class="home-icon" />
-      <img src="/images/logo.png">
+      <img src="/static/images/logo.png">
     </div>
     <!-- board menu area -->
     <div class="boards-menu-toggle">
       <div class="dropdown">
         <button class="btn dropdown-toggle" type="button" id="boardsMenu" data-toggle="dropdown"
               aria-haspopup="true" aria-expanded="false">
-          {{ $t('header.boardsMenu.label') }}
+          Boards
         </button>
         <div class="dropdown-menu" aria-labelledby="boardsMenu">
-          <div v-show="!hasBoards" class="dropdown-item">{{ $t('header.boardsMenu.noBoard') }}</div>
+          <div v-show="!hasBoards" class="dropdown-item">No boards</div>
           <div v-show="hasBoards">
-            <h6 class="dropdown-header" v-show="personalBoards.length">{{ $t('header.boardsMenu.personalBoards') }}</h6>
+            <h6 class="dropdown-header" v-show="personalBoards.length">Personal Boards</h6>
             <button v-for="board in personalBoards" v-bind:key="board.id" @click="openBoard(board)"
                     class="dropdown-item" type="button">{{ board.name }}</button>
             <div v-for="team in teamBoards" v-bind:key="'t' + team.id">
@@ -31,7 +31,7 @@
     <div class="search-box flex-fill">
       <div class="search-wrapper">
         <font-awesome-icon icon="search" class="search-icon" />
-        <input type="text" v-bind:placeholder="$t('header.search')" class="form-control form-control-sm" />
+        <input type="text" v-bind:placeholder="Search" class="form-control form-control-sm" />
       </div>
     </div>
     <!-- profile menu area -->
@@ -42,8 +42,8 @@
           {{ user.name }}
         </button>
         <div class="dropdown-menu" aria-labelledby="profileMenu">
-          <button class="dropdown-item" type="button">{{ $t('header.profile') }}</button>
-          <button class="dropdown-item" type="button">{{ $t('header.signOut') }}</button>
+          <button class="dropdown-item" type="button">Profile</button>
+          <button class="dropdown-item" type="button">Sign Out</button>
         </div>
       </div>
     </div>
@@ -57,6 +57,8 @@ import { mapGetters } from 'vuex'
 
 export default {
   name: 'PageHeader',
+  // ...mpaGetters([])문을 사용하여 getters.js에 직접 접근이 가능하도록 함.
+  // ex) {{ user. name }}
   computed: {
     ...mapGetters([
       'user',
@@ -70,10 +72,10 @@ export default {
   },
   methods: {
     goHome () {
-      this.$router.push({name: 'home'})
+      this.$router.push({ name: 'home' })
     },
     openBoard (board) {
-      this.$router.push({name: 'board', params: { boardId: board.id }})
+      this.$router.push({ name: 'board', params: { boardId: board.id } })
     }
   }
 }

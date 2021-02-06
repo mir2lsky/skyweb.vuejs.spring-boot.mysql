@@ -3,9 +3,11 @@ module.exports = {
     return this.api.launchUrl
   },
   elements: {
+    // pageTitle: {
+    //   selector: 'h1.page-title'
+    // },
     logoImage: {
       selector: '.logo img'
-    },
-    pageTitle: '.page-title'
+    }
   }
 }

@@ -56,9 +56,9 @@ module.exports = {
 
     homePage
       .navigate()
-      .expect.element('@pageTitle').text.to.contain('Home Page')
+      .assert.visible('@logoImage')
 
-    browser.end()
+      browser.end()
   },
 
   'login with email address': function (browser) {
@@ -73,7 +73,8 @@ module.exports = {
 
     homePage
       .navigate()
-      .expect.element('@pageTitle').text.to.contain('Home Page')
+      // .expect.element('@pageTitle').text.to.contain('Home Page')
+      .assert.visible('@logoImage')
 
     browser.end()
   }
