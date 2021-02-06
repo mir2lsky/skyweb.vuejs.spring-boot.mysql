@@ -1,5 +1,6 @@
+// -- Mutaion ---
+// only mutations can change state of vuex store
 export default {
-  // only mutations can change state of vuex store
   updateMyData (state, data) {
     state.user.name = data.user.name
     state.teams = data.teams

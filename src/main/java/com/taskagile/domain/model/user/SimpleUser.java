@@ -20,7 +20,7 @@ public class SimpleUser implements UserDetails {
 
   private static final long serialVersionUID = -7144174657188362966L;
 
-  private long userId;
+  private UserId userId;
   private String username;
   private String password;
 
@@ -30,7 +30,7 @@ public class SimpleUser implements UserDetails {
     this.password = user.getPassword();
   }
 
-  public long gtUserId() {
+  public UserId getUserId() {
     return userId;
   }
 

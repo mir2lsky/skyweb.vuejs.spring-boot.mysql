@@ -9,7 +9,7 @@ import org.hibernate.query.Query;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public class HibernateUserRepository extends HibernateSupport implements UserRepository {
+public class HibernateUserRepository extends HibernateSupport<User> implements UserRepository {
 
   public HibernateUserRepository(EntityManager entityManager) {
     super(entityManager);
@@ -29,10 +29,11 @@ public class HibernateUserRepository extends HibernateSupport implements UserRep
     return query.uniqueResult();
   }
 
-  @Override
-  public void save(User user) {
-    entityManager.persist(user);
-    entityManager.flush();
-  }
+  // HibernateSupport에서 처리되므로 필요없어서 제거함
+  // @Override
+  // public void save(User user) {
+  //   entityManager.persist(user);
+  //   entityManager.flush();
+  // }
 
 }

@@ -6,6 +6,9 @@ import javax.validation.constraints.Size;
 
 import com.taskagile.domain.application.commands.RegistrationCommand;
 
+/**
+ * Request Body에 있는 매개변수를 가져오기 위한 클래스(payload)
+ */
 public class RegistrationPayload {
 
   @Size(min=2, max=50, message="Username must be between 2 and 50 characters")
@@ -21,6 +24,7 @@ public class RegistrationPayload {
   @NotNull
   private String password;
 
+  // payload 객체로부터 내부적으로 사용할 VO 객체 생성
   public RegistrationCommand toCommand() {
     return new RegistrationCommand(this.username, this.emailAddress, this.password);
   }
