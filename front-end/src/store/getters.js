@@ -1,3 +1,6 @@
+// --- Getter ---
+// store에 저장된 내용을 읽는 객체
+
 // export const user = state => state.user
 export const user = state => { return { name: 'James J. Ye' } }
 

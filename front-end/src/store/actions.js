@@ -1,5 +1,7 @@
 import meService from '@/services/me'
 
+// -- Action ---
+// action only can comit mutation
 export const getMyData = ({ commit }) => {
   meService.getMyData().then(data => {
     commit('updateMyData', data)

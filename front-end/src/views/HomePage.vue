@@ -37,23 +37,29 @@
         <button class="btn btn-link" @click="createTeam()">+ Create New Team</button>
       </div>
     </div>
+
+    <!-- Modal Dialog -->
+    <!-- CreateBoardModal에 teamId props와 created 이벤트를 넘김-->
+    <CreateBoardModal :teamId="selectedTeamId" @created="onBoardCreated" />
+    <CreateTeamModal />
+
   </div>
 </template>
 
 <script>
-// import $ from 'jquery'
+import $ from 'jquery'
 import PageHeader from '@/components/PageHeader.vue'
-// import CreateBoardModal from '@/modals/CreateBoardModal.vue'
-// import CreateTeamModal from '@/modals/CreateTeamModal.vue'
+import CreateBoardModal from '@/modals/CreateBoardModal.vue'
+import CreateTeamModal from '@/modals/CreateTeamModal.vue'
 import { mapGetters } from 'vuex'
 
 export default {
   name: 'HomePage',
-  // data () {
-  //   return {
-  //     selectedTeamId: 0
-  //   }
-  // },
+  data () {
+    return {
+      selectedTeamId: 0
+    }
+  },
   computed: {
     ...mapGetters([
       'personalBoards',
@@ -61,26 +67,26 @@ export default {
     ])
   },
   components: {
-    PageHeader
-    // ,
-    // CreateBoardModal,
-    // CreateTeamModal
+    PageHeader,
+    CreateBoardModal,
+    CreateTeamModal
   },
   methods: {
     openBoard (board) {
       this.$router.push({ name: 'board', params: { boardId: board.id } })
     },
     createBoard (team) {
-      // this.selectedTeamId = team ? team.id : 0
-      // $('#createBoardModal').modal('show')
+      this.selectedTeamId = team ? team.id : 0
+      $('#createBoardModal').modal('show')
     },
     createTeam () {
-      // $('#createTeamModal').modal('show')
+      $('#createTeamModal').modal('show')
+    },
+    // CreateBoardModal에서 callback돨 함수
+    onBoardCreated (boardId) {
+      // boardI를 받아서 해당 Board page로 redirect
+      this.$router.push({ name: 'board', params: { boardId: boardId } })
     }
-    // ,
-    // onBoardCreated (boardId) {
-    //   this.$router.push({name: 'board', params: {boardId: boardId}})
-    // }
   }
 }
 </script>
