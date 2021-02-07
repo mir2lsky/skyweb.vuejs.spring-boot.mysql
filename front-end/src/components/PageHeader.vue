@@ -3,7 +3,7 @@
     <!-- logo area -->
     <div class="logo" @click="goHome()">
       <font-awesome-icon icon="home" class="home-icon" />
-      <img src="/static/images/logo.png">
+      <img src="/images/logo.png">
     </div>
     <!-- board menu area -->
     <div class="boards-menu-toggle">

@@ -53,7 +53,7 @@ describe('RegisterPage.vue', () => {
   // --------- registration form test ----------------------------------
   it('should render registration form', () => {
     expect(wrapper.find('.logo').attributes().src)
-      .toEqual('/static/images/logo.png')
+      .toEqual('/images/logo.png')
     expect(wrapper.find('.tagline').text())
       .toEqual('Open source task management tool')
     expect(fieldUsername.element.value).toEqual('')

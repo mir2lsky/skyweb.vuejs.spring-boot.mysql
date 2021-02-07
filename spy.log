@@ -34,3 +34,21 @@ EXPLAIN select user0_.id as id1_3_, user0_.created_date as created_2_3_, user0_.
 - 2021-02-07 19:42:59.749 | took 0ms | connection 0 
 EXPLAIN select user0_.id as id1_3_, user0_.created_date as created_2_3_, user0_.email_address as email_ad3_3_, user0_.first_name as first_na4_3_, user0_.last_name as last_nam5_3_, user0_.password as password6_3_, user0_.username as username7_3_ from user user0_ where user0_.email_address='harriet223226@e2e.taskagile.com';
 
+- 2021-02-07 21:05:57.420 | took 6ms | connection 0 
+EXPLAIN select user0_.id as id1_3_, user0_.created_date as created_2_3_, user0_.email_address as email_ad3_3_, user0_.first_name as first_na4_3_, user0_.last_name as last_nam5_3_, user0_.password as password6_3_, user0_.username as username7_3_ from user user0_ where user0_.username='callie521856';
+
+- 2021-02-07 21:05:57.437 | took 0ms | connection 0 
+EXPLAIN select user0_.id as id1_3_, user0_.created_date as created_2_3_, user0_.email_address as email_ad3_3_, user0_.first_name as first_na4_3_, user0_.last_name as last_nam5_3_, user0_.password as password6_3_, user0_.username as username7_3_ from user user0_ where user0_.email_address='callie521856@e2e.taskagile.com';
+
+- 2021-02-07 21:05:57.625 | took 7ms | connection 0 
+EXPLAIN insert into user (created_date, email_address, first_name, last_name, password, username) values ('07-2¿ù-21', 'callie521856@e2e.taskagile.com', '', '', '$2a$10$CwZ8gra/9xNYBcce/zNrQO01QMpZPGz20I3V6AYb/wKKIYbcXNyr2', 'callie521856');
+
+- 2021-02-07 21:06:06.242 | took 0ms | connection 0 
+EXPLAIN select user0_.id as id1_3_, user0_.created_date as created_2_3_, user0_.email_address as email_ad3_3_, user0_.first_name as first_na4_3_, user0_.last_name as last_nam5_3_, user0_.password as password6_3_, user0_.username as username7_3_ from user user0_ where user0_.username='not-exist';
+
+- 2021-02-07 21:06:09.529 | took 0ms | connection 0 
+EXPLAIN select user0_.id as id1_3_, user0_.created_date as created_2_3_, user0_.email_address as email_ad3_3_, user0_.first_name as first_na4_3_, user0_.last_name as last_nam5_3_, user0_.password as password6_3_, user0_.username as username7_3_ from user user0_ where user0_.username='callie521856';
+
+- 2021-02-07 21:06:14.847 | took 1ms | connection 0 
+EXPLAIN select user0_.id as id1_3_, user0_.created_date as created_2_3_, user0_.email_address as email_ad3_3_, user0_.first_name as first_na4_3_, user0_.last_name as last_nam5_3_, user0_.password as password6_3_, user0_.username as username7_3_ from user user0_ where user0_.email_address='callie521856@e2e.taskagile.com';
+
