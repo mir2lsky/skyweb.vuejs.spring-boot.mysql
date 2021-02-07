@@ -163,7 +163,8 @@ public class UserServiceImplTests {
       "welcome.ftl",
       MessageVariable.from("user", newUser)
     );
-    verify(domainEventPublisherMock).publish(new UserRegisteredEvent(newUser));
+    // 이벤트 발생시 원천(this)과 대상(newUser)을 publish
+    verify(domainEventPublisherMock).publish(new UserRegisteredEvent(this, newUser));
   }
 
 

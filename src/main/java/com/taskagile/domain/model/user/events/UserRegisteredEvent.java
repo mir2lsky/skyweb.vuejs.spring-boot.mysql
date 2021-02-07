@@ -10,9 +10,13 @@ public class UserRegisteredEvent extends DomainEvent {
   private static final long serialVersionUID = 2580061707540917880L;
 
   private User user;
-
-  public UserRegisteredEvent(User user) {
-    super(user);
+  /**
+   *
+   * @param source : 이벤트를 발생시킨 주체, 원천
+   * @param user   : 이벤트의 대상
+   */
+  public UserRegisteredEvent(Object source, User user) {
+    super(source);
     Assert.notNull(user, "Parameter `user` must not be null");
     this.user = user;
   }
