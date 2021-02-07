@@ -6,7 +6,7 @@ Vue.use(VueI18n)
 
 // Create VueI18n instance with options
 export const i18n = new VueI18n({
-  locale: 'en_US',
+  locale: 'en_US', // default
   messages: {
     en_US: enUS,
     zh_CN: zhCN

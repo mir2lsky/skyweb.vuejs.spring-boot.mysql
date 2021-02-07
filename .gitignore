@@ -34,6 +34,7 @@ build/
 
 ### Spring ###
 application-dev.properties
+src/main/resources/static/static/images/
 src/main/resources/static/css/
 src/main/resources/static/favicon.ico
 src/main/resources/static/js/

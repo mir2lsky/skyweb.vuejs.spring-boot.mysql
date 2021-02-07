@@ -1,0 +1,18 @@
+- 2021-02-07 19:28:44.372 | took 6ms | connection 0 
+EXPLAIN select user0_.id as id1_3_, user0_.created_date as created_2_3_, user0_.email_address as email_ad3_3_, user0_.first_name as first_na4_3_, user0_.last_name as last_nam5_3_, user0_.password as password6_3_, user0_.username as username7_3_ from user user0_ where user0_.username='joel881087';
+
+- 2021-02-07 19:28:44.389 | took 0ms | connection 0 
+EXPLAIN select user0_.id as id1_3_, user0_.created_date as created_2_3_, user0_.email_address as email_ad3_3_, user0_.first_name as first_na4_3_, user0_.last_name as last_nam5_3_, user0_.password as password6_3_, user0_.username as username7_3_ from user user0_ where user0_.email_address='joel881087@e2e.taskagile.com';
+
+- 2021-02-07 19:28:44.581 | took 7ms | connection 0 
+EXPLAIN insert into user (created_date, email_address, first_name, last_name, password, username) values ('07-2¿ù-21', 'joel881087@e2e.taskagile.com', '', '', '$2a$10$yeNyiq74qhr/7cdQPHD9renT5hBdQj8m3azcf//mBBntxVXQJDtqO', 'joel881087');
+
+- 2021-02-07 19:28:56.773 | took 0ms | connection 0 
+EXPLAIN select user0_.id as id1_3_, user0_.created_date as created_2_3_, user0_.email_address as email_ad3_3_, user0_.first_name as first_na4_3_, user0_.last_name as last_nam5_3_, user0_.password as password6_3_, user0_.username as username7_3_ from user user0_ where user0_.username='not-exist';
+
+- 2021-02-07 19:29:00.108 | took 0ms | connection 0 
+EXPLAIN select user0_.id as id1_3_, user0_.created_date as created_2_3_, user0_.email_address as email_ad3_3_, user0_.first_name as first_na4_3_, user0_.last_name as last_nam5_3_, user0_.password as password6_3_, user0_.username as username7_3_ from user user0_ where user0_.username='joel881087';
+
+- 2021-02-07 19:29:05.234 | took 0ms | connection 0 
+EXPLAIN select user0_.id as id1_3_, user0_.created_date as created_2_3_, user0_.email_address as email_ad3_3_, user0_.first_name as first_na4_3_, user0_.last_name as last_nam5_3_, user0_.password as password6_3_, user0_.username as username7_3_ from user user0_ where user0_.email_address='joel881087@e2e.taskagile.com';
+
