@@ -10,7 +10,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-// @SuppressWarnings("all")
+@SuppressWarnings("all")
 public class MyDataResult {
 
   public static ResponseEntity<ApiResult> build(SimpleUser currentUser, List<Team> teams, List<Board> boards) {

@@ -2,9 +2,9 @@
   <footer class="footer">
     <span class="copyright">&copy; 2021 TaskAgile.com</span>
     <ul class="footer-links list-inline float-right">
-      <ul class="list-inline-item"><a href="#">About</a></ul>
-      <ul class="list-inline-item"><a href="#">Terms of Service</a></ul>
-      <ul class="list-inline-item"><a href="#">Privacy Policy</a></ul>
+      <ul class="list-inline-item"><a href="#">{{ $t("pageFooter.about") }}</a></ul>
+      <ul class="list-inline-item"><a href="#">{{ $t("pageFooter.termOfService") }}</a></ul>
+      <ul class="list-inline-item"><a href="#">{{ $t("pageFooter.privacyPolicy") }}</a></ul>
       <ul class="list-inline-item"><a href="https://github.com/mir2lsky/skyweb.vuejs.spring-boot.mysql" target="_blank">GitHub</a></ul>
     </ul>
   </footer>

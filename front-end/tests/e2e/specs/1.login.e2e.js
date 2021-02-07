@@ -3,14 +3,14 @@
 const data = require('../data/user')
 
 module.exports = {
-  'login test': function (browser) {
-    browser
-      // .url(process.env.VUE_DEV_SERVER_URL + 'login')
-      .url(browser.launchUrl + 'login')
-      .waitForElementVisible('#app', 5000)
-      .assert.containsText('div', 'Open source task management tool')
-      .end()
-  },
+  // 'login test': function (browser) {
+  //   browser
+  //     // .url(process.env.VUE_DEV_SERVER_URL + 'login')
+  //     .url(browser.launchUrl + 'login')
+  //     .waitForElementVisible('#app', 5000)
+  //     .assert.containsText('div', 'Open source task management tool')
+  //     .end()
+  // },
 
   'login page renders elements': function (browser) {
     const loginPage = browser.page.LoginPage();

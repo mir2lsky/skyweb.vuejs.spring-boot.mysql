@@ -3,12 +3,15 @@ import Vuelidate from 'vuelidate'
 import VueRouter from 'vue-router'
 import LoginPage from '@/views/LoginPage.vue'
 import authenticationService from '@/services/authentication'
+import { i18n } from '@/i18n'
 
 // Setup local Vue with Vuelidate
 const localVue = createLocalVue()
 localVue.use(Vuelidate)
 localVue.use(VueRouter)
-const router = new VueRouter()
+const router = new VueRouter({
+  mode: 'history'
+})
 
 // Mock dependency registrationService
 jest.mock('@/services/authentication')
@@ -23,7 +26,11 @@ describe('LoginPage.vue', () => {
   beforeEach(() => {
     wrapper = mount(LoginPage, {
       localVue,
-      router
+      router,
+      i18n,
+      mocks: {
+        $t: (msg) => i18n.t(msg)
+      }
     })
     fieldUsername = wrapper.find('#username')
     fieldPassword = wrapper.find('#password')

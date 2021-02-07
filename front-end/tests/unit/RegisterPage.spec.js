@@ -3,6 +3,7 @@ import RegisterPage from '@/views/RegisterPage'
 import VueRouter from 'vue-router'
 import Vuelidate from 'vuelidate'
 import registrationService from '@/services/registration'
+import { i18n } from '@/i18n'
 
 // vm.$router 에 접근 할 수 있도록 테스트에 Vue Router 추가
 const localVue = createLocalVue()
@@ -25,7 +26,11 @@ describe('RegisterPage.vue', () => {
   beforeEach(() => {
     wrapper = mount(RegisterPage, {
       localVue,
-      router
+      router,
+      i18n,
+      mocks: {
+        $t: (msg) => i18n.t(msg)
+      }
     })
     fieldUsername = wrapper.find('#username')
     fieldEmailAddress = wrapper.find('#emailAddress')
