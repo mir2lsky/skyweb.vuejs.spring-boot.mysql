@@ -27,10 +27,11 @@ describe('LoginPage.vue', () => {
     wrapper = mount(LoginPage, {
       localVue,
       router,
-      i18n,
-      mocks: {
-        $t: (msg) => i18n.t(msg)
-      }
+      i18n
+      // 아래의 $t를 위한 목 오브젝트는 불필요하므로 혼란을 방지하기 위해 제거
+      // mocks: {
+      //   $t: (msg) => i18n.t(msg)
+      // }
     })
     fieldUsername = wrapper.find('#username')
     fieldPassword = wrapper.find('#password')
