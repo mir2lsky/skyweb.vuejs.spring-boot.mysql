@@ -85,12 +85,15 @@ export default {
         name: this.board.name,
         description: this.board.description
       }
+      console.log('=== CreateBoardModal.vue :: board : ' + board)
 
       boardService.create(board).then((createdBoard) => {
         // 서버에 저장된 board를 받아 store에 dispatch
         this.$store.dispatch('addBoard', createdBoard)
         // 호출 측에서 구독 중인 create 이벤트를 발생시킴
         // 내부적으로는 호출 측에서 넘겨준 created 아벤트에 신규 board id를 넣어서 호출
+        console.log('=== CreateBoardModal.vue :: saveBoard, createdBoard.id : ' + createdBoard.id)
+
         this.$emit('created', createdBoard.id)
         this.close()
       }).catch(error => {

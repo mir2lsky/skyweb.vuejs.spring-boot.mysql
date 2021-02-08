@@ -4,8 +4,7 @@ export default {
  *
  */
   register (detail) {
-    console.log('*** mock :: regisger executed...')
-    console.log('*** mock :: detail.emailAddress : ' + detail.emailAddress)
+    // console.log('*** mock :: regisger executed...')
     return new Promise((resolve, reject) => {
       detail.emailAddress === 'sunny@taskagile.com'
         ? resolve({ result: 'success' })

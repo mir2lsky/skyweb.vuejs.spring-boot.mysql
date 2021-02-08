@@ -41,6 +41,9 @@ public class ApiResult extends HashMap<String, Object> {
     Assert.notNull(value, "Parameter `value` must not be null");
 
     this.put(key, value);
+    System.out.println("====== ApiResult.key   : " + key);
+    System.out.println("====== ApiResult.value : " + value.toString());
+
     return this;
   }
 

@@ -52,3 +52,456 @@ EXPLAIN select user0_.id as id1_3_, user0_.created_date as created_2_3_, user0_.
 - 2021-02-07 21:06:14.847 | took 1ms | connection 0 
 EXPLAIN select user0_.id as id1_3_, user0_.created_date as created_2_3_, user0_.email_address as email_ad3_3_, user0_.first_name as first_na4_3_, user0_.last_name as last_nam5_3_, user0_.password as password6_3_, user0_.username as username7_3_ from user user0_ where user0_.email_address='callie521856@e2e.taskagile.com';
 
+- 2021-02-08 12:01:06.157 | took 6ms | connection 0 
+EXPLAIN select user0_.id as id1_3_, user0_.created_date as created_2_3_, user0_.email_address as email_ad3_3_, user0_.first_name as first_na4_3_, user0_.last_name as last_nam5_3_, user0_.password as password6_3_, user0_.username as username7_3_ from user user0_ where user0_.username='skymir37';
+
+- 2021-02-08 12:11:23.603 | took 10ms | connection 0 
+EXPLAIN select user0_.id as id1_3_, user0_.created_date as created_2_3_, user0_.email_address as email_ad3_3_, user0_.first_name as first_na4_3_, user0_.last_name as last_nam5_3_, user0_.password as password6_3_, user0_.username as username7_3_ from user user0_ where user0_.username='sue523044';
+
+- 2021-02-08 12:11:23.624 | took 0ms | connection 0 
+EXPLAIN select user0_.id as id1_3_, user0_.created_date as created_2_3_, user0_.email_address as email_ad3_3_, user0_.first_name as first_na4_3_, user0_.last_name as last_nam5_3_, user0_.password as password6_3_, user0_.username as username7_3_ from user user0_ where user0_.email_address='sue523044@e2e.taskagile.com';
+
+- 2021-02-08 12:11:23.817 | took 1ms | connection 0 
+EXPLAIN insert into user (created_date, email_address, first_name, last_name, password, username) values ('08-2월-21', 'sue523044@e2e.taskagile.com', '', '', '$2a$10$HRmhomgZvxbmlaY3il6aVedCGaXbtTg3tNEwOX2A2Rpl6hWqfbqAS', 'sue523044');
+
+- 2021-02-08 12:11:34.370 | took 0ms | connection 0 
+EXPLAIN select user0_.id as id1_3_, user0_.created_date as created_2_3_, user0_.email_address as email_ad3_3_, user0_.first_name as first_na4_3_, user0_.last_name as last_nam5_3_, user0_.password as password6_3_, user0_.username as username7_3_ from user user0_ where user0_.username='not-exist';
+
+- 2021-02-08 12:11:37.691 | took 0ms | connection 0 
+EXPLAIN select user0_.id as id1_3_, user0_.created_date as created_2_3_, user0_.email_address as email_ad3_3_, user0_.first_name as first_na4_3_, user0_.last_name as last_nam5_3_, user0_.password as password6_3_, user0_.username as username7_3_ from user user0_ where user0_.username='sue523044';
+
+- 2021-02-08 12:11:42.976 | took 0ms | connection 0 
+EXPLAIN select user0_.id as id1_3_, user0_.created_date as created_2_3_, user0_.email_address as email_ad3_3_, user0_.first_name as first_na4_3_, user0_.last_name as last_nam5_3_, user0_.password as password6_3_, user0_.username as username7_3_ from user user0_ where user0_.email_address='sue523044@e2e.taskagile.com';
+
+- 2021-02-08 12:13:52.418 | took 9ms | connection 0 
+EXPLAIN select user0_.id as id1_3_, user0_.created_date as created_2_3_, user0_.email_address as email_ad3_3_, user0_.first_name as first_na4_3_, user0_.last_name as last_nam5_3_, user0_.password as password6_3_, user0_.username as username7_3_ from user user0_ where user0_.username='skymir37';
+
+- 2021-02-08 14:13:11.945 | took 6ms | connection 0 
+EXPLAIN select user0_.id as id1_3_, user0_.created_date as created_2_3_, user0_.email_address as email_ad3_3_, user0_.first_name as first_na4_3_, user0_.last_name as last_nam5_3_, user0_.password as password6_3_, user0_.username as username7_3_ from user user0_ where user0_.username='dylan418917';
+
+- 2021-02-08 14:13:11.961 | took 0ms | connection 0 
+EXPLAIN select user0_.id as id1_3_, user0_.created_date as created_2_3_, user0_.email_address as email_ad3_3_, user0_.first_name as first_na4_3_, user0_.last_name as last_nam5_3_, user0_.password as password6_3_, user0_.username as username7_3_ from user user0_ where user0_.email_address='dylan418917@e2e.taskagile.com';
+
+- 2021-02-08 14:13:12.177 | took 7ms | connection 0 
+EXPLAIN insert into user (created_date, email_address, first_name, last_name, password, username) values ('08-2월-21', 'dylan418917@e2e.taskagile.com', '', '', '$2a$10$YJQCqVWlSyUWtjyE5sDrV.B.WMMgooMa6UUbJuMN/4e.C0eK1PKzC', 'dylan418917');
+
+- 2021-02-08 14:13:20.732 | took 0ms | connection 0 
+EXPLAIN select user0_.id as id1_3_, user0_.created_date as created_2_3_, user0_.email_address as email_ad3_3_, user0_.first_name as first_na4_3_, user0_.last_name as last_nam5_3_, user0_.password as password6_3_, user0_.username as username7_3_ from user user0_ where user0_.username='not-exist';
+
+- 2021-02-08 14:13:24.15 | took 0ms | connection 0 
+EXPLAIN select user0_.id as id1_3_, user0_.created_date as created_2_3_, user0_.email_address as email_ad3_3_, user0_.first_name as first_na4_3_, user0_.last_name as last_nam5_3_, user0_.password as password6_3_, user0_.username as username7_3_ from user user0_ where user0_.username='dylan418917';
+
+- 2021-02-08 14:13:29.156 | took 1ms | connection 0 
+EXPLAIN select user0_.id as id1_3_, user0_.created_date as created_2_3_, user0_.email_address as email_ad3_3_, user0_.first_name as first_na4_3_, user0_.last_name as last_nam5_3_, user0_.password as password6_3_, user0_.username as username7_3_ from user user0_ where user0_.email_address='dylan418917@e2e.taskagile.com';
+
+- 2021-02-08 14:15:22.48 | took 10ms | connection 0 
+EXPLAIN select user0_.id as id1_3_, user0_.created_date as created_2_3_, user0_.email_address as email_ad3_3_, user0_.first_name as first_na4_3_, user0_.last_name as last_nam5_3_, user0_.password as password6_3_, user0_.username as username7_3_ from user user0_ where user0_.username='skymir37';
+
+- 2021-02-08 14:54:21.596 | took 6ms | connection 0 
+EXPLAIN select user0_.id as id1_3_, user0_.created_date as created_2_3_, user0_.email_address as email_ad3_3_, user0_.first_name as first_na4_3_, user0_.last_name as last_nam5_3_, user0_.password as password6_3_, user0_.username as username7_3_ from user user0_ where user0_.username='victor284008';
+
+- 2021-02-08 14:54:21.612 | took 0ms | connection 0 
+EXPLAIN select user0_.id as id1_3_, user0_.created_date as created_2_3_, user0_.email_address as email_ad3_3_, user0_.first_name as first_na4_3_, user0_.last_name as last_nam5_3_, user0_.password as password6_3_, user0_.username as username7_3_ from user user0_ where user0_.email_address='victor284008@e2e.taskagile.com';
+
+- 2021-02-08 14:54:21.797 | took 8ms | connection 0 
+EXPLAIN insert into user (created_date, email_address, first_name, last_name, password, username) values ('08-2월-21', 'victor284008@e2e.taskagile.com', '', '', '$2a$10$OXZuSlvowsspoTVdTH0HfeBtakXy52PSiBiUYv8KVxm57JA8129S2', 'victor284008');
+
+- 2021-02-08 14:54:30.462 | took 0ms | connection 0 
+EXPLAIN select user0_.id as id1_3_, user0_.created_date as created_2_3_, user0_.email_address as email_ad3_3_, user0_.first_name as first_na4_3_, user0_.last_name as last_nam5_3_, user0_.password as password6_3_, user0_.username as username7_3_ from user user0_ where user0_.username='not-exist';
+
+- 2021-02-08 14:54:35.584 | took 0ms | connection 0 
+EXPLAIN select user0_.id as id1_3_, user0_.created_date as created_2_3_, user0_.email_address as email_ad3_3_, user0_.first_name as first_na4_3_, user0_.last_name as last_nam5_3_, user0_.password as password6_3_, user0_.username as username7_3_ from user user0_ where user0_.username='victor284008';
+
+- 2021-02-08 14:54:35.918 | took 20ms | connection 0 
+EXPLAIN  SELECT t.* FROM team t WHERE t.user_id = 35  UNION  (    SELECT t.* FROM team t, board b, board_member bm    WHERE t.id = b.team_id AND bm.board_id = b.id AND bm.user_id = 35  ) ;
+
+- 2021-02-08 14:54:35.936 | took 0ms | connection 0 
+EXPLAIN SELECT b.* FROM board b   LEFT JOIN board_member bm ON b.id = bm.board_id  WHERE bm.user_id = 35 ;
+
+- 2021-02-08 14:54:37.796 | took 1ms | connection 0 
+EXPLAIN  SELECT t.* FROM team t WHERE t.user_id = 35  UNION  (    SELECT t.* FROM team t, board b, board_member bm    WHERE t.id = b.team_id AND bm.board_id = b.id AND bm.user_id = 35  ) ;
+
+- 2021-02-08 14:54:37.800 | took 0ms | connection 0 
+EXPLAIN SELECT b.* FROM board b   LEFT JOIN board_member bm ON b.id = bm.board_id  WHERE bm.user_id = 35 ;
+
+- 2021-02-08 14:54:40.944 | took 0ms | connection 0 
+EXPLAIN select user0_.id as id1_3_, user0_.created_date as created_2_3_, user0_.email_address as email_ad3_3_, user0_.first_name as first_na4_3_, user0_.last_name as last_nam5_3_, user0_.password as password6_3_, user0_.username as username7_3_ from user user0_ where user0_.email_address='victor284008@e2e.taskagile.com';
+
+- 2021-02-08 14:54:41.186 | took 1ms | connection 0 
+EXPLAIN  SELECT t.* FROM team t WHERE t.user_id = 35  UNION  (    SELECT t.* FROM team t, board b, board_member bm    WHERE t.id = b.team_id AND bm.board_id = b.id AND bm.user_id = 35  ) ;
+
+- 2021-02-08 14:54:41.192 | took 0ms | connection 0 
+EXPLAIN SELECT b.* FROM board b   LEFT JOIN board_member bm ON b.id = bm.board_id  WHERE bm.user_id = 35 ;
+
+- 2021-02-08 14:54:43.200 | took 0ms | connection 0 
+EXPLAIN  SELECT t.* FROM team t WHERE t.user_id = 35  UNION  (    SELECT t.* FROM team t, board b, board_member bm    WHERE t.id = b.team_id AND bm.board_id = b.id AND bm.user_id = 35  ) ;
+
+- 2021-02-08 14:54:43.203 | took 0ms | connection 0 
+EXPLAIN SELECT b.* FROM board b   LEFT JOIN board_member bm ON b.id = bm.board_id  WHERE bm.user_id = 35 ;
+
+- 2021-02-08 14:55:39.431 | took 6ms | connection 0 
+EXPLAIN select user0_.id as id1_3_, user0_.created_date as created_2_3_, user0_.email_address as email_ad3_3_, user0_.first_name as first_na4_3_, user0_.last_name as last_nam5_3_, user0_.password as password6_3_, user0_.username as username7_3_ from user user0_ where user0_.username='skymir37';
+
+- 2021-02-08 14:55:39.881 | took 19ms | connection 0 
+EXPLAIN  SELECT t.* FROM team t WHERE t.user_id = 29  UNION  (    SELECT t.* FROM team t, board b, board_member bm    WHERE t.id = b.team_id AND bm.board_id = b.id AND bm.user_id = 29  ) ;
+
+- 2021-02-08 14:55:39.907 | took 1ms | connection 0 
+EXPLAIN SELECT b.* FROM board b   LEFT JOIN board_member bm ON b.id = bm.board_id  WHERE bm.user_id = 29 ;
+
+- 2021-02-08 14:57:08.995 | took 7ms | connection 0 
+EXPLAIN insert into board (archived, created_date, description, name, team_id, user_id) values (false, '08-2월-21', 'Job task', 'Job Task List', 1, 29);
+
+- 2021-02-08 14:57:09.16 | took 0ms | connection 0 
+EXPLAIN insert into board_member (board_id, user_id) values (3, 29);
+
+- 2021-02-08 14:57:58.381 | took 1ms | connection 0 
+EXPLAIN  SELECT t.* FROM team t WHERE t.user_id = 29  UNION  (    SELECT t.* FROM team t, board b, board_member bm    WHERE t.id = b.team_id AND bm.board_id = b.id AND bm.user_id = 29  ) ;
+
+- 2021-02-08 14:57:58.401 | took 0ms | connection 0 
+EXPLAIN SELECT b.* FROM board b   LEFT JOIN board_member bm ON b.id = bm.board_id  WHERE bm.user_id = 29 ;
+
+- 2021-02-08 14:58:01.829 | took 0ms | connection 0 
+EXPLAIN  SELECT t.* FROM team t WHERE t.user_id = 29  UNION  (    SELECT t.* FROM team t, board b, board_member bm    WHERE t.id = b.team_id AND bm.board_id = b.id AND bm.user_id = 29  ) ;
+
+- 2021-02-08 14:58:01.834 | took 0ms | connection 0 
+EXPLAIN SELECT b.* FROM board b   LEFT JOIN board_member bm ON b.id = bm.board_id  WHERE bm.user_id = 29 ;
+
+- 2021-02-08 14:58:20.226 | took 0ms | connection 0 
+EXPLAIN insert into board (archived, created_date, description, name, team_id, user_id) values (false, '08-2월-21', 'dfdf', 'todo2', NULL, 29);
+
+- 2021-02-08 14:58:20.232 | took 4ms | connection 0 
+EXPLAIN insert into board_member (board_id, user_id) values (4, 29);
+
+- 2021-02-08 14:59:08.215 | took 1ms | connection 0 
+EXPLAIN  SELECT t.* FROM team t WHERE t.user_id = 29  UNION  (    SELECT t.* FROM team t, board b, board_member bm    WHERE t.id = b.team_id AND bm.board_id = b.id AND bm.user_id = 29  ) ;
+
+- 2021-02-08 14:59:08.220 | took 0ms | connection 0 
+EXPLAIN SELECT b.* FROM board b   LEFT JOIN board_member bm ON b.id = bm.board_id  WHERE bm.user_id = 29 ;
+
+- 2021-02-08 14:59:19.680 | took 0ms | connection 0 
+EXPLAIN  SELECT t.* FROM team t WHERE t.user_id = 29  UNION  (    SELECT t.* FROM team t, board b, board_member bm    WHERE t.id = b.team_id AND bm.board_id = b.id AND bm.user_id = 29  ) ;
+
+- 2021-02-08 14:59:19.758 | took 0ms | connection 0 
+EXPLAIN SELECT b.* FROM board b   LEFT JOIN board_member bm ON b.id = bm.board_id  WHERE bm.user_id = 29 ;
+
+- 2021-02-08 15:32:56.232 | took 14ms | connection 11 
+EXPLAIN  SELECT t.* FROM team t WHERE t.user_id = 29  UNION  (    SELECT t.* FROM team t, board b, board_member bm    WHERE t.id = b.team_id AND bm.board_id = b.id AND bm.user_id = 29  ) ;
+
+- 2021-02-08 15:32:56.232 | took 14ms | connection 10 
+EXPLAIN  SELECT t.* FROM team t WHERE t.user_id = 29  UNION  (    SELECT t.* FROM team t, board b, board_member bm    WHERE t.id = b.team_id AND bm.board_id = b.id AND bm.user_id = 29  ) ;
+
+- 2021-02-08 15:32:56.237 | took 0ms | connection 10 
+EXPLAIN SELECT b.* FROM board b   LEFT JOIN board_member bm ON b.id = bm.board_id  WHERE bm.user_id = 29 ;
+
+- 2021-02-08 15:32:56.237 | took 0ms | connection 11 
+EXPLAIN SELECT b.* FROM board b   LEFT JOIN board_member bm ON b.id = bm.board_id  WHERE bm.user_id = 29 ;
+
+- 2021-02-08 15:35:50.947 | took 6ms | connection 0 
+EXPLAIN select user0_.id as id1_3_, user0_.created_date as created_2_3_, user0_.email_address as email_ad3_3_, user0_.first_name as first_na4_3_, user0_.last_name as last_nam5_3_, user0_.password as password6_3_, user0_.username as username7_3_ from user user0_ where user0_.username='joe646709';
+
+- 2021-02-08 15:35:50.964 | took 0ms | connection 0 
+EXPLAIN select user0_.id as id1_3_, user0_.created_date as created_2_3_, user0_.email_address as email_ad3_3_, user0_.first_name as first_na4_3_, user0_.last_name as last_nam5_3_, user0_.password as password6_3_, user0_.username as username7_3_ from user user0_ where user0_.email_address='joe646709@e2e.taskagile.com';
+
+- 2021-02-08 15:35:51.151 | took 7ms | connection 0 
+EXPLAIN insert into user (created_date, email_address, first_name, last_name, password, username) values ('08-2월-21', 'joe646709@e2e.taskagile.com', '', '', '$2a$10$.qWx2B2uac4i.Xyv7HfBVOkmmiZGvXe0DBx4s.djXte1PL2OGb7ky', 'joe646709');
+
+- 2021-02-08 15:35:59.755 | took 0ms | connection 0 
+EXPLAIN select user0_.id as id1_3_, user0_.created_date as created_2_3_, user0_.email_address as email_ad3_3_, user0_.first_name as first_na4_3_, user0_.last_name as last_nam5_3_, user0_.password as password6_3_, user0_.username as username7_3_ from user user0_ where user0_.username='not-exist';
+
+- 2021-02-08 15:36:03.229 | took 0ms | connection 0 
+EXPLAIN select user0_.id as id1_3_, user0_.created_date as created_2_3_, user0_.email_address as email_ad3_3_, user0_.first_name as first_na4_3_, user0_.last_name as last_nam5_3_, user0_.password as password6_3_, user0_.username as username7_3_ from user user0_ where user0_.username='joe646709';
+
+- 2021-02-08 15:36:03.563 | took 14ms | connection 0 
+EXPLAIN  SELECT t.* FROM team t WHERE t.user_id = 36  UNION  (    SELECT t.* FROM team t, board b, board_member bm    WHERE t.id = b.team_id AND bm.board_id = b.id AND bm.user_id = 36  ) ;
+
+- 2021-02-08 15:36:03.581 | took 0ms | connection 0 
+EXPLAIN SELECT b.* FROM board b   LEFT JOIN board_member bm ON b.id = bm.board_id  WHERE bm.user_id = 36 ;
+
+- 2021-02-08 15:36:05.457 | took 0ms | connection 0 
+EXPLAIN  SELECT t.* FROM team t WHERE t.user_id = 36  UNION  (    SELECT t.* FROM team t, board b, board_member bm    WHERE t.id = b.team_id AND bm.board_id = b.id AND bm.user_id = 36  ) ;
+
+- 2021-02-08 15:36:05.461 | took 0ms | connection 0 
+EXPLAIN SELECT b.* FROM board b   LEFT JOIN board_member bm ON b.id = bm.board_id  WHERE bm.user_id = 36 ;
+
+- 2021-02-08 15:36:10.504 | took 0ms | connection 0 
+EXPLAIN select user0_.id as id1_3_, user0_.created_date as created_2_3_, user0_.email_address as email_ad3_3_, user0_.first_name as first_na4_3_, user0_.last_name as last_nam5_3_, user0_.password as password6_3_, user0_.username as username7_3_ from user user0_ where user0_.email_address='joe646709@e2e.taskagile.com';
+
+- 2021-02-08 15:36:10.737 | took 0ms | connection 0 
+EXPLAIN  SELECT t.* FROM team t WHERE t.user_id = 36  UNION  (    SELECT t.* FROM team t, board b, board_member bm    WHERE t.id = b.team_id AND bm.board_id = b.id AND bm.user_id = 36  ) ;
+
+- 2021-02-08 15:36:10.741 | took 0ms | connection 0 
+EXPLAIN SELECT b.* FROM board b   LEFT JOIN board_member bm ON b.id = bm.board_id  WHERE bm.user_id = 36 ;
+
+- 2021-02-08 15:36:12.721 | took 0ms | connection 0 
+EXPLAIN  SELECT t.* FROM team t WHERE t.user_id = 36  UNION  (    SELECT t.* FROM team t, board b, board_member bm    WHERE t.id = b.team_id AND bm.board_id = b.id AND bm.user_id = 36  ) ;
+
+- 2021-02-08 15:36:12.724 | took 0ms | connection 0 
+EXPLAIN SELECT b.* FROM board b   LEFT JOIN board_member bm ON b.id = bm.board_id  WHERE bm.user_id = 36 ;
+
+- 2021-02-08 15:37:58.757 | took 10ms | connection 0 
+EXPLAIN select user0_.id as id1_3_, user0_.created_date as created_2_3_, user0_.email_address as email_ad3_3_, user0_.first_name as first_na4_3_, user0_.last_name as last_nam5_3_, user0_.password as password6_3_, user0_.username as username7_3_ from user user0_ where user0_.username='skymir37';
+
+- 2021-02-08 15:37:59.308 | took 16ms | connection 0 
+EXPLAIN  SELECT t.* FROM team t WHERE t.user_id = 29  UNION  (    SELECT t.* FROM team t, board b, board_member bm    WHERE t.id = b.team_id AND bm.board_id = b.id AND bm.user_id = 29  ) ;
+
+- 2021-02-08 15:37:59.339 | took 2ms | connection 0 
+EXPLAIN SELECT b.* FROM board b   LEFT JOIN board_member bm ON b.id = bm.board_id  WHERE bm.user_id = 29 ;
+
+- 2021-02-08 15:38:59.813 | took 7ms | connection 0 
+EXPLAIN insert into board (archived, created_date, description, name, team_id, user_id) values (false, '08-2월-21', 'todo list 3', 'todo3', NULL, 29);
+
+- 2021-02-08 15:38:59.834 | took 0ms | connection 0 
+EXPLAIN insert into board_member (board_id, user_id) values (5, 29);
+
+- 2021-02-08 15:39:53.446 | took 1ms | connection 0 
+EXPLAIN  SELECT t.* FROM team t WHERE t.user_id = 29  UNION  (    SELECT t.* FROM team t, board b, board_member bm    WHERE t.id = b.team_id AND bm.board_id = b.id AND bm.user_id = 29  ) ;
+
+- 2021-02-08 15:39:53.468 | took 16ms | connection 0 
+EXPLAIN SELECT b.* FROM board b   LEFT JOIN board_member bm ON b.id = bm.board_id  WHERE bm.user_id = 29 ;
+
+- 2021-02-08 15:44:44.122 | took 6ms | connection 0 
+EXPLAIN select user0_.id as id1_3_, user0_.created_date as created_2_3_, user0_.email_address as email_ad3_3_, user0_.first_name as first_na4_3_, user0_.last_name as last_nam5_3_, user0_.password as password6_3_, user0_.username as username7_3_ from user user0_ where user0_.username='martha162413';
+
+- 2021-02-08 15:44:44.140 | took 0ms | connection 0 
+EXPLAIN select user0_.id as id1_3_, user0_.created_date as created_2_3_, user0_.email_address as email_ad3_3_, user0_.first_name as first_na4_3_, user0_.last_name as last_nam5_3_, user0_.password as password6_3_, user0_.username as username7_3_ from user user0_ where user0_.email_address='martha162413@e2e.taskagile.com';
+
+- 2021-02-08 15:44:44.330 | took 7ms | connection 0 
+EXPLAIN insert into user (created_date, email_address, first_name, last_name, password, username) values ('08-2월-21', 'martha162413@e2e.taskagile.com', '', '', '$2a$10$i5ECBKJoQJdFRcObQ1CNsOe7cEEVRM.A37ae3iMGRXqi3bHdDA.ge', 'martha162413');
+
+- 2021-02-08 15:44:53.130 | took 0ms | connection 0 
+EXPLAIN select user0_.id as id1_3_, user0_.created_date as created_2_3_, user0_.email_address as email_ad3_3_, user0_.first_name as first_na4_3_, user0_.last_name as last_nam5_3_, user0_.password as password6_3_, user0_.username as username7_3_ from user user0_ where user0_.username='not-exist';
+
+- 2021-02-08 15:44:56.465 | took 0ms | connection 0 
+EXPLAIN select user0_.id as id1_3_, user0_.created_date as created_2_3_, user0_.email_address as email_ad3_3_, user0_.first_name as first_na4_3_, user0_.last_name as last_nam5_3_, user0_.password as password6_3_, user0_.username as username7_3_ from user user0_ where user0_.username='martha162413';
+
+- 2021-02-08 15:44:56.802 | took 12ms | connection 0 
+EXPLAIN  SELECT t.* FROM team t WHERE t.user_id = 37  UNION  (    SELECT t.* FROM team t, board b, board_member bm    WHERE t.id = b.team_id AND bm.board_id = b.id AND bm.user_id = 37  ) ;
+
+- 2021-02-08 15:44:56.826 | took 0ms | connection 0 
+EXPLAIN SELECT b.* FROM board b   LEFT JOIN board_member bm ON b.id = bm.board_id  WHERE bm.user_id = 37 ;
+
+- 2021-02-08 15:44:58.700 | took 0ms | connection 0 
+EXPLAIN  SELECT t.* FROM team t WHERE t.user_id = 37  UNION  (    SELECT t.* FROM team t, board b, board_member bm    WHERE t.id = b.team_id AND bm.board_id = b.id AND bm.user_id = 37  ) ;
+
+- 2021-02-08 15:44:58.704 | took 0ms | connection 0 
+EXPLAIN SELECT b.* FROM board b   LEFT JOIN board_member bm ON b.id = bm.board_id  WHERE bm.user_id = 37 ;
+
+- 2021-02-08 15:45:01.768 | took 0ms | connection 0 
+EXPLAIN select user0_.id as id1_3_, user0_.created_date as created_2_3_, user0_.email_address as email_ad3_3_, user0_.first_name as first_na4_3_, user0_.last_name as last_nam5_3_, user0_.password as password6_3_, user0_.username as username7_3_ from user user0_ where user0_.email_address='martha162413@e2e.taskagile.com';
+
+- 2021-02-08 15:45:01.997 | took 0ms | connection 0 
+EXPLAIN  SELECT t.* FROM team t WHERE t.user_id = 37  UNION  (    SELECT t.* FROM team t, board b, board_member bm    WHERE t.id = b.team_id AND bm.board_id = b.id AND bm.user_id = 37  ) ;
+
+- 2021-02-08 15:45:02.00 | took 0ms | connection 0 
+EXPLAIN SELECT b.* FROM board b   LEFT JOIN board_member bm ON b.id = bm.board_id  WHERE bm.user_id = 37 ;
+
+- 2021-02-08 15:45:03.984 | took 0ms | connection 0 
+EXPLAIN  SELECT t.* FROM team t WHERE t.user_id = 37  UNION  (    SELECT t.* FROM team t, board b, board_member bm    WHERE t.id = b.team_id AND bm.board_id = b.id AND bm.user_id = 37  ) ;
+
+- 2021-02-08 15:45:03.988 | took 0ms | connection 0 
+EXPLAIN SELECT b.* FROM board b   LEFT JOIN board_member bm ON b.id = bm.board_id  WHERE bm.user_id = 37 ;
+
+- 2021-02-08 15:52:45.964 | took 9ms | connection 0 
+EXPLAIN select user0_.id as id1_3_, user0_.created_date as created_2_3_, user0_.email_address as email_ad3_3_, user0_.first_name as first_na4_3_, user0_.last_name as last_nam5_3_, user0_.password as password6_3_, user0_.username as username7_3_ from user user0_ where user0_.username='estella265467';
+
+- 2021-02-08 15:52:45.988 | took 0ms | connection 0 
+EXPLAIN select user0_.id as id1_3_, user0_.created_date as created_2_3_, user0_.email_address as email_ad3_3_, user0_.first_name as first_na4_3_, user0_.last_name as last_nam5_3_, user0_.password as password6_3_, user0_.username as username7_3_ from user user0_ where user0_.email_address='estella265467@e2e.taskagile.com';
+
+- 2021-02-08 15:52:46.250 | took 7ms | connection 0 
+EXPLAIN insert into user (created_date, email_address, first_name, last_name, password, username) values ('08-2월-21', 'estella265467@e2e.taskagile.com', '', '', '$2a$10$7tqy5MAU7ojT5G1KFrQAFOH3/oY1PW2yuoR.dhxNqUDyvK3FEBBeK', 'estella265467');
+
+- 2021-02-08 15:52:54.790 | took 0ms | connection 0 
+EXPLAIN select user0_.id as id1_3_, user0_.created_date as created_2_3_, user0_.email_address as email_ad3_3_, user0_.first_name as first_na4_3_, user0_.last_name as last_nam5_3_, user0_.password as password6_3_, user0_.username as username7_3_ from user user0_ where user0_.username='not-exist';
+
+- 2021-02-08 15:52:58.372 | took 0ms | connection 0 
+EXPLAIN select user0_.id as id1_3_, user0_.created_date as created_2_3_, user0_.email_address as email_ad3_3_, user0_.first_name as first_na4_3_, user0_.last_name as last_nam5_3_, user0_.password as password6_3_, user0_.username as username7_3_ from user user0_ where user0_.username='estella265467';
+
+- 2021-02-08 15:52:58.697 | took 10ms | connection 0 
+EXPLAIN  SELECT t.* FROM team t WHERE t.user_id = 38  UNION  (    SELECT t.* FROM team t, board b, board_member bm    WHERE t.id = b.team_id AND bm.board_id = b.id AND bm.user_id = 38  ) ;
+
+- 2021-02-08 15:52:58.717 | took 0ms | connection 0 
+EXPLAIN SELECT b.* FROM board b   LEFT JOIN board_member bm ON b.id = bm.board_id  WHERE bm.user_id = 38 ;
+
+- 2021-02-08 15:53:00.584 | took 1ms | connection 0 
+EXPLAIN  SELECT t.* FROM team t WHERE t.user_id = 38  UNION  (    SELECT t.* FROM team t, board b, board_member bm    WHERE t.id = b.team_id AND bm.board_id = b.id AND bm.user_id = 38  ) ;
+
+- 2021-02-08 15:53:00.590 | took 0ms | connection 0 
+EXPLAIN SELECT b.* FROM board b   LEFT JOIN board_member bm ON b.id = bm.board_id  WHERE bm.user_id = 38 ;
+
+- 2021-02-08 15:53:05.463 | took 0ms | connection 0 
+EXPLAIN select user0_.id as id1_3_, user0_.created_date as created_2_3_, user0_.email_address as email_ad3_3_, user0_.first_name as first_na4_3_, user0_.last_name as last_nam5_3_, user0_.password as password6_3_, user0_.username as username7_3_ from user user0_ where user0_.email_address='estella265467@e2e.taskagile.com';
+
+- 2021-02-08 15:53:05.690 | took 0ms | connection 0 
+EXPLAIN  SELECT t.* FROM team t WHERE t.user_id = 38  UNION  (    SELECT t.* FROM team t, board b, board_member bm    WHERE t.id = b.team_id AND bm.board_id = b.id AND bm.user_id = 38  ) ;
+
+- 2021-02-08 15:53:05.694 | took 0ms | connection 0 
+EXPLAIN SELECT b.* FROM board b   LEFT JOIN board_member bm ON b.id = bm.board_id  WHERE bm.user_id = 38 ;
+
+- 2021-02-08 15:53:07.696 | took 0ms | connection 0 
+EXPLAIN  SELECT t.* FROM team t WHERE t.user_id = 38  UNION  (    SELECT t.* FROM team t, board b, board_member bm    WHERE t.id = b.team_id AND bm.board_id = b.id AND bm.user_id = 38  ) ;
+
+- 2021-02-08 15:53:07.702 | took 1ms | connection 0 
+EXPLAIN SELECT b.* FROM board b   LEFT JOIN board_member bm ON b.id = bm.board_id  WHERE bm.user_id = 38 ;
+
+- 2021-02-09 00:22:32.968 | took 7ms | connection 0 
+EXPLAIN select user0_.id as id1_3_, user0_.created_date as created_2_3_, user0_.email_address as email_ad3_3_, user0_.first_name as first_na4_3_, user0_.last_name as last_nam5_3_, user0_.password as password6_3_, user0_.username as username7_3_ from user user0_ where user0_.username='lela213595';
+
+- 2021-02-09 00:22:33.90 | took 0ms | connection 0 
+EXPLAIN select user0_.id as id1_3_, user0_.created_date as created_2_3_, user0_.email_address as email_ad3_3_, user0_.first_name as first_na4_3_, user0_.last_name as last_nam5_3_, user0_.password as password6_3_, user0_.username as username7_3_ from user user0_ where user0_.email_address='lela213595@e2e.taskagile.com';
+
+- 2021-02-09 00:22:33.323 | took 1ms | connection 0 
+EXPLAIN insert into user (created_date, email_address, first_name, last_name, password, username) values ('09-2월-21', 'lela213595@e2e.taskagile.com', '', '', '$2a$10$fTT6lo.dTtNZEdV8yhB6iuxBRZ3ZFvojvkSXsN.3tr6ltaBBObZXu', 'lela213595');
+
+- 2021-02-09 00:22:41.715 | took 0ms | connection 0 
+EXPLAIN select user0_.id as id1_3_, user0_.created_date as created_2_3_, user0_.email_address as email_ad3_3_, user0_.first_name as first_na4_3_, user0_.last_name as last_nam5_3_, user0_.password as password6_3_, user0_.username as username7_3_ from user user0_ where user0_.username='not-exist';
+
+- 2021-02-09 00:22:45.58 | took 0ms | connection 0 
+EXPLAIN select user0_.id as id1_3_, user0_.created_date as created_2_3_, user0_.email_address as email_ad3_3_, user0_.first_name as first_na4_3_, user0_.last_name as last_nam5_3_, user0_.password as password6_3_, user0_.username as username7_3_ from user user0_ where user0_.username='lela213595';
+
+- 2021-02-09 00:22:45.385 | took 1ms | connection 0 
+EXPLAIN  SELECT t.* FROM team t WHERE t.user_id = 39  UNION  (    SELECT t.* FROM team t, board b, board_member bm    WHERE t.id = b.team_id AND bm.board_id = b.id AND bm.user_id = 39  ) ;
+
+- 2021-02-09 00:22:45.402 | took 0ms | connection 0 
+EXPLAIN SELECT b.* FROM board b   LEFT JOIN board_member bm ON b.id = bm.board_id  WHERE bm.user_id = 39 ;
+
+- 2021-02-09 00:22:47.253 | took 0ms | connection 0 
+EXPLAIN  SELECT t.* FROM team t WHERE t.user_id = 39  UNION  (    SELECT t.* FROM team t, board b, board_member bm    WHERE t.id = b.team_id AND bm.board_id = b.id AND bm.user_id = 39  ) ;
+
+- 2021-02-09 00:22:47.258 | took 1ms | connection 0 
+EXPLAIN SELECT b.* FROM board b   LEFT JOIN board_member bm ON b.id = bm.board_id  WHERE bm.user_id = 39 ;
+
+- 2021-02-09 00:22:50.157 | took 0ms | connection 0 
+EXPLAIN select user0_.id as id1_3_, user0_.created_date as created_2_3_, user0_.email_address as email_ad3_3_, user0_.first_name as first_na4_3_, user0_.last_name as last_nam5_3_, user0_.password as password6_3_, user0_.username as username7_3_ from user user0_ where user0_.email_address='lela213595@e2e.taskagile.com';
+
+- 2021-02-09 00:22:50.389 | took 1ms | connection 0 
+EXPLAIN  SELECT t.* FROM team t WHERE t.user_id = 39  UNION  (    SELECT t.* FROM team t, board b, board_member bm    WHERE t.id = b.team_id AND bm.board_id = b.id AND bm.user_id = 39  ) ;
+
+- 2021-02-09 00:22:50.392 | took 0ms | connection 0 
+EXPLAIN SELECT b.* FROM board b   LEFT JOIN board_member bm ON b.id = bm.board_id  WHERE bm.user_id = 39 ;
+
+- 2021-02-09 00:22:52.395 | took 0ms | connection 0 
+EXPLAIN  SELECT t.* FROM team t WHERE t.user_id = 39  UNION  (    SELECT t.* FROM team t, board b, board_member bm    WHERE t.id = b.team_id AND bm.board_id = b.id AND bm.user_id = 39  ) ;
+
+- 2021-02-09 00:22:52.398 | took 0ms | connection 0 
+EXPLAIN SELECT b.* FROM board b   LEFT JOIN board_member bm ON b.id = bm.board_id  WHERE bm.user_id = 39 ;
+
+- 2021-02-09 01:49:01.359 | took 13ms | connection 0 
+EXPLAIN select user0_.id as id1_3_, user0_.created_date as created_2_3_, user0_.email_address as email_ad3_3_, user0_.first_name as first_na4_3_, user0_.last_name as last_nam5_3_, user0_.password as password6_3_, user0_.username as username7_3_ from user user0_ where user0_.username='skymir37';
+
+- 2021-02-09 01:49:01.840 | took 1ms | connection 0 
+EXPLAIN  SELECT t.* FROM team t WHERE t.user_id = 29  UNION  (    SELECT t.* FROM team t, board b, board_member bm    WHERE t.id = b.team_id AND bm.board_id = b.id AND bm.user_id = 29  ) ;
+
+- 2021-02-09 01:49:01.867 | took 1ms | connection 0 
+EXPLAIN SELECT b.* FROM board b   LEFT JOIN board_member bm ON b.id = bm.board_id  WHERE bm.user_id = 29 ;
+
+- 2021-02-09 01:49:38.961 | took 7ms | connection 0 
+EXPLAIN insert into board (archived, created_date, description, name, team_id, user_id) values (false, '09-2월-21', 'Job Taks 2', 'Job Taks2', 1, 29);
+
+- 2021-02-09 01:49:38.980 | took 0ms | connection 0 
+EXPLAIN insert into board_member (board_id, user_id) values (6, 29);
+
+- 2021-02-09 01:58:23.691 | took 6ms | connection 0 
+EXPLAIN select user0_.id as id1_3_, user0_.created_date as created_2_3_, user0_.email_address as email_ad3_3_, user0_.first_name as first_na4_3_, user0_.last_name as last_nam5_3_, user0_.password as password6_3_, user0_.username as username7_3_ from user user0_ where user0_.username='blanche999254';
+
+- 2021-02-09 01:58:23.708 | took 0ms | connection 0 
+EXPLAIN select user0_.id as id1_3_, user0_.created_date as created_2_3_, user0_.email_address as email_ad3_3_, user0_.first_name as first_na4_3_, user0_.last_name as last_nam5_3_, user0_.password as password6_3_, user0_.username as username7_3_ from user user0_ where user0_.email_address='blanche999254@e2e.taskagile.com';
+
+- 2021-02-09 01:58:23.902 | took 7ms | connection 0 
+EXPLAIN insert into user (created_date, email_address, first_name, last_name, password, username) values ('09-2월-21', 'blanche999254@e2e.taskagile.com', '', '', '$2a$10$0z6wgV3zJ1u8JzWR0ui8pe1ncSEIBu7e7Z3u8htL2M2ZcrZBegcMm', 'blanche999254');
+
+- 2021-02-09 01:58:34.438 | took 0ms | connection 0 
+EXPLAIN select user0_.id as id1_3_, user0_.created_date as created_2_3_, user0_.email_address as email_ad3_3_, user0_.first_name as first_na4_3_, user0_.last_name as last_nam5_3_, user0_.password as password6_3_, user0_.username as username7_3_ from user user0_ where user0_.username='not-exist';
+
+- 2021-02-09 01:58:37.861 | took 0ms | connection 0 
+EXPLAIN select user0_.id as id1_3_, user0_.created_date as created_2_3_, user0_.email_address as email_ad3_3_, user0_.first_name as first_na4_3_, user0_.last_name as last_nam5_3_, user0_.password as password6_3_, user0_.username as username7_3_ from user user0_ where user0_.username='blanche999254';
+
+- 2021-02-09 01:58:38.171 | took 1ms | connection 0 
+EXPLAIN  SELECT t.* FROM team t WHERE t.user_id = 40  UNION  (    SELECT t.* FROM team t, board b, board_member bm    WHERE t.id = b.team_id AND bm.board_id = b.id AND bm.user_id = 40  ) ;
+
+- 2021-02-09 01:58:38.209 | took 16ms | connection 0 
+EXPLAIN SELECT b.* FROM board b   LEFT JOIN board_member bm ON b.id = bm.board_id  WHERE bm.user_id = 40 ;
+
+- 2021-02-09 01:58:40.75 | took 0ms | connection 0 
+EXPLAIN  SELECT t.* FROM team t WHERE t.user_id = 40  UNION  (    SELECT t.* FROM team t, board b, board_member bm    WHERE t.id = b.team_id AND bm.board_id = b.id AND bm.user_id = 40  ) ;
+
+- 2021-02-09 01:58:40.79 | took 0ms | connection 0 
+EXPLAIN SELECT b.* FROM board b   LEFT JOIN board_member bm ON b.id = bm.board_id  WHERE bm.user_id = 40 ;
+
+- 2021-02-09 01:58:43.132 | took 0ms | connection 0 
+EXPLAIN select user0_.id as id1_3_, user0_.created_date as created_2_3_, user0_.email_address as email_ad3_3_, user0_.first_name as first_na4_3_, user0_.last_name as last_nam5_3_, user0_.password as password6_3_, user0_.username as username7_3_ from user user0_ where user0_.email_address='blanche999254@e2e.taskagile.com';
+
+- 2021-02-09 01:58:43.369 | took 1ms | connection 0 
+EXPLAIN  SELECT t.* FROM team t WHERE t.user_id = 40  UNION  (    SELECT t.* FROM team t, board b, board_member bm    WHERE t.id = b.team_id AND bm.board_id = b.id AND bm.user_id = 40  ) ;
+
+- 2021-02-09 01:58:43.373 | took 0ms | connection 0 
+EXPLAIN SELECT b.* FROM board b   LEFT JOIN board_member bm ON b.id = bm.board_id  WHERE bm.user_id = 40 ;
+
+- 2021-02-09 01:58:45.350 | took 0ms | connection 0 
+EXPLAIN  SELECT t.* FROM team t WHERE t.user_id = 40  UNION  (    SELECT t.* FROM team t, board b, board_member bm    WHERE t.id = b.team_id AND bm.board_id = b.id AND bm.user_id = 40  ) ;
+
+- 2021-02-09 01:58:45.354 | took 0ms | connection 0 
+EXPLAIN SELECT b.* FROM board b   LEFT JOIN board_member bm ON b.id = bm.board_id  WHERE bm.user_id = 40 ;
+
+- 2021-02-09 02:00:11.220 | took 6ms | connection 0 
+EXPLAIN select user0_.id as id1_3_, user0_.created_date as created_2_3_, user0_.email_address as email_ad3_3_, user0_.first_name as first_na4_3_, user0_.last_name as last_nam5_3_, user0_.password as password6_3_, user0_.username as username7_3_ from user user0_ where user0_.username='skymir37';
+
+- 2021-02-09 02:00:11.694 | took 1ms | connection 0 
+EXPLAIN  SELECT t.* FROM team t WHERE t.user_id = 29  UNION  (    SELECT t.* FROM team t, board b, board_member bm    WHERE t.id = b.team_id AND bm.board_id = b.id AND bm.user_id = 29  ) ;
+
+- 2021-02-09 02:00:11.725 | took 1ms | connection 0 
+EXPLAIN SELECT b.* FROM board b   LEFT JOIN board_member bm ON b.id = bm.board_id  WHERE bm.user_id = 29 ;
+
+- 2021-02-09 02:00:44.432 | took 7ms | connection 0 
+EXPLAIN insert into board (archived, created_date, description, name, team_id, user_id) values (false, '09-2월-21', 'job task 3', 'Job Taks3', 1, 29);
+
+- 2021-02-09 02:00:44.449 | took 0ms | connection 0 
+EXPLAIN insert into board_member (board_id, user_id) values (7, 29);
+
+- 2021-02-09 02:00:44.649 | took 1ms | connection 0 
+EXPLAIN  SELECT t.* FROM team t WHERE t.user_id = 29  UNION  (    SELECT t.* FROM team t, board b, board_member bm    WHERE t.id = b.team_id AND bm.board_id = b.id AND bm.user_id = 29  ) ;
+
+- 2021-02-09 02:00:44.655 | took 1ms | connection 0 
+EXPLAIN SELECT b.* FROM board b   LEFT JOIN board_member bm ON b.id = bm.board_id  WHERE bm.user_id = 29 ;
+
+- 2021-02-09 02:05:51.08 | took 6ms | connection 0 
+EXPLAIN select user0_.id as id1_3_, user0_.created_date as created_2_3_, user0_.email_address as email_ad3_3_, user0_.first_name as first_na4_3_, user0_.last_name as last_nam5_3_, user0_.password as password6_3_, user0_.username as username7_3_ from user user0_ where user0_.username='rhoda715561';
+
+- 2021-02-09 02:05:51.27 | took 0ms | connection 0 
+EXPLAIN select user0_.id as id1_3_, user0_.created_date as created_2_3_, user0_.email_address as email_ad3_3_, user0_.first_name as first_na4_3_, user0_.last_name as last_nam5_3_, user0_.password as password6_3_, user0_.username as username7_3_ from user user0_ where user0_.email_address='rhoda715561@e2e.taskagile.com';
+
+- 2021-02-09 02:05:51.226 | took 7ms | connection 0 
+EXPLAIN insert into user (created_date, email_address, first_name, last_name, password, username) values ('09-2월-21', 'rhoda715561@e2e.taskagile.com', '', '', '$2a$10$FTyLQBDfkwTTzESBq04L/.cnqprR12OZonqfw5iDhXtQGJNZluFMm', 'rhoda715561');
+
+- 2021-02-09 02:05:59.812 | took 0ms | connection 0 
+EXPLAIN select user0_.id as id1_3_, user0_.created_date as created_2_3_, user0_.email_address as email_ad3_3_, user0_.first_name as first_na4_3_, user0_.last_name as last_nam5_3_, user0_.password as password6_3_, user0_.username as username7_3_ from user user0_ where user0_.username='not-exist';
+
+- 2021-02-09 02:06:03.126 | took 0ms | connection 0 
+EXPLAIN select user0_.id as id1_3_, user0_.created_date as created_2_3_, user0_.email_address as email_ad3_3_, user0_.first_name as first_na4_3_, user0_.last_name as last_nam5_3_, user0_.password as password6_3_, user0_.username as username7_3_ from user user0_ where user0_.username='rhoda715561';
+
+- 2021-02-09 02:06:03.431 | took 0ms | connection 0 
+EXPLAIN  SELECT t.* FROM team t WHERE t.user_id = 41  UNION  (    SELECT t.* FROM team t, board b, board_member bm    WHERE t.id = b.team_id AND bm.board_id = b.id AND bm.user_id = 41  ) ;
+
+- 2021-02-09 02:06:03.448 | took 0ms | connection 0 
+EXPLAIN SELECT b.* FROM board b   LEFT JOIN board_member bm ON b.id = bm.board_id  WHERE bm.user_id = 41 ;
+
+- 2021-02-09 02:06:05.348 | took 2ms | connection 0 
+EXPLAIN  SELECT t.* FROM team t WHERE t.user_id = 41  UNION  (    SELECT t.* FROM team t, board b, board_member bm    WHERE t.id = b.team_id AND bm.board_id = b.id AND bm.user_id = 41  ) ;
+
+- 2021-02-09 02:06:05.353 | took 0ms | connection 0 
+EXPLAIN SELECT b.* FROM board b   LEFT JOIN board_member bm ON b.id = bm.board_id  WHERE bm.user_id = 41 ;
+
+- 2021-02-09 02:06:08.368 | took 0ms | connection 0 
+EXPLAIN select user0_.id as id1_3_, user0_.created_date as created_2_3_, user0_.email_address as email_ad3_3_, user0_.first_name as first_na4_3_, user0_.last_name as last_nam5_3_, user0_.password as password6_3_, user0_.username as username7_3_ from user user0_ where user0_.email_address='rhoda715561@e2e.taskagile.com';
+
+- 2021-02-09 02:06:08.602 | took 1ms | connection 0 
+EXPLAIN  SELECT t.* FROM team t WHERE t.user_id = 41  UNION  (    SELECT t.* FROM team t, board b, board_member bm    WHERE t.id = b.team_id AND bm.board_id = b.id AND bm.user_id = 41  ) ;
+
+- 2021-02-09 02:06:08.606 | took 0ms | connection 0 
+EXPLAIN SELECT b.* FROM board b   LEFT JOIN board_member bm ON b.id = bm.board_id  WHERE bm.user_id = 41 ;
+
+- 2021-02-09 02:06:10.587 | took 0ms | connection 0 
+EXPLAIN  SELECT t.* FROM team t WHERE t.user_id = 41  UNION  (    SELECT t.* FROM team t, board b, board_member bm    WHERE t.id = b.team_id AND bm.board_id = b.id AND bm.user_id = 41  ) ;
+
+- 2021-02-09 02:06:10.591 | took 0ms | connection 0 
+EXPLAIN SELECT b.* FROM board b   LEFT JOIN board_member bm ON b.id = bm.board_id  WHERE bm.user_id = 41 ;
+

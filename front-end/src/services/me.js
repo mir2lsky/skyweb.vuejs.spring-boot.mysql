@@ -5,7 +5,7 @@ export default {
   /**
    * Fetch current user's name, boards, and teams
    */
-  create (detail) {
+  getMyData () {
     return new Promise((resolve, reject) => {
       axios.get('/me').then(({ data }) => {
         resolve(data)

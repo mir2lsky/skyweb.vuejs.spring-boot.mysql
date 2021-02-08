@@ -68,6 +68,7 @@ export default {
     ])
   },
   created () {
+    // Vue 인스턴스의 created 라이프 사이클 훅
     this.$store.dispatch('getMyData')
   },
   methods: {

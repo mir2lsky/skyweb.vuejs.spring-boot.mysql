@@ -28,11 +28,11 @@ describe('services/registration', () => {
   // 에러 확인 테스트도 동일한 처리흐름으로 실행된다.
   it('should pass the response to caller when request succeeded', () => {
     expect.assertions(2)
-    console.log('=== 1. it SUCCESS test')
+    // console.log('=== 1. it SUCCESS test')
     moxios.wait(() => {
       const request = moxios.requests.mostRecent()
       expect(request).toBeTruthy()
-      console.log('=== 3. moxis SUCCESS procsss')
+      // console.log('=== 3. moxis SUCCESS procsss')
       request.respondWith({
         status: 200,
         response: { result: 'success(from moxios)' }
@@ -40,18 +40,18 @@ describe('services/registration', () => {
     })
 
     return registrationService.register().then(data => {
-      console.dir('=== 5.moxios rtn : data.result ' + data.result)
+      // console.dir('=== 5.moxios rtn : data.result ' + data.result)
       expect(data.result).toEqual('success(from moxios)')
     })
   })
 
   it('should propagate the error to caller when request failed', () => {
     expect.assertions(2)
-    console.log('=== 1. it ERROR test')
+    // console.log('=== 1. it ERROR test')
     moxios.wait(() => {
       const request = moxios.requests.mostRecent()
       expect(request).toBeTruthy()
-      console.log('=== 3. moxis ERROR procsss')
+      // console.log('=== 3. moxis ERROR procsss')
       request.reject({
         // status: 400,
         // response: { message: 'Bad request' }
@@ -63,7 +63,7 @@ describe('services/registration', () => {
     })
 
     return registrationService.register().catch(error => {
-      console.dir('=== 5. moxios rtn : error : ' + error.message)
+      // console.dir('=== 5. moxios rtn : error : ' + error.message)
       // error를 response라는 이름의 객체에 담으면 내부의 data를 생략하고 바로
       // data의 속성을 읽을 수 있다.
       // expect(error.response.message).toEqual('Bad request')

@@ -85,6 +85,7 @@ export default {
     // CreateBoardModal에서 callback돨 함수
     onBoardCreated (boardId) {
       // boardI를 받아서 해당 Board page로 redirect
+      // console.log('=== HomePage.vue :: onBoardCreated, boardId : ' + boardId)
       this.$router.push({ name: 'board', params: { boardId: boardId } })
     }
   }
