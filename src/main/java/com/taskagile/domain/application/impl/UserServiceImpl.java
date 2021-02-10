@@ -11,6 +11,7 @@ import com.taskagile.domain.model.user.RegistrationException;
 import com.taskagile.domain.model.user.RegistrationManagement;
 import com.taskagile.domain.model.user.SimpleUser;
 import com.taskagile.domain.model.user.User;
+import com.taskagile.domain.model.user.UserId;
 import com.taskagile.domain.model.user.UserRepository;
 import com.taskagile.domain.model.user.events.UserRegisteredEvent;
 
@@ -59,11 +60,18 @@ public class UserServiceImpl implements UserService {
   }
 
   @Override
+  public User findById(UserId userId) {
+    return userRepository.findById(userId);
+  }
+
+  @Override
   public void register(RegistrationCommand command) throws RegistrationException {
     Assert.notNull(command, "Parameter `command` must not be null");
     User newUser = registrationManagement.register(
       command.getUsername(),
       command.getEmailAddress(),
+      command.getFirstName(),
+      command.getLastName(),
       command.getPassword());
 
     sendWelcomeMessage(newUser);

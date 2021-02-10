@@ -1,6 +1,7 @@
 package com.taskagile.domain.common.model;
 
 import java.io.Serializable;
+import java.util.Objects;
 
 public abstract class AbstractBaseId implements Serializable {
 
@@ -18,6 +19,19 @@ public abstract class AbstractBaseId implements Serializable {
 
   public boolean isValid() {
     return id > 0;
+  }
+
+  @Override
+  public boolean equals(Object o) {
+    if (this == o) return true;
+    if (!(o instanceof AbstractBaseId)) return false;
+    AbstractBaseId that = (AbstractBaseId) o;
+    return id == that.id;
+  }
+
+  @Override
+  public int hashCode() {
+    return Objects.hash(id);
   }
 
 }

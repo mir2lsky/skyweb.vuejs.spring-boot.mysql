@@ -31,9 +31,11 @@ public class RegistrationManagementTests {
     String username = "existUsername";
     String emailAddress = "sunny@taskagile.com";
     String password = "MyPassword!";
+    String firstName = "Existing";
+    String lastName = "User";
 
     when(repositoryMock.findByUsername(username)).thenReturn(new User());
-    instance.register(username, emailAddress, password);
+    instance.register(username, emailAddress, firstName, lastName, password);
   }
 
   @Test(expected = EmailAddressExistsException.class)
@@ -41,10 +43,12 @@ public class RegistrationManagementTests {
     String username = "sunny";
     String emailAddress = "exist@taskagile.com";
     String password = "MyPassword!";
+    String firstName = "Sunny";
+    String lastName = "Hu";
 
     // We just return an empty user object to indicate an existing user
     when(repositoryMock.findByEmailAddress(emailAddress)).thenReturn(new User());
-    instance.register(username, emailAddress, password);
+    instance.register(username, emailAddress, firstName, lastName, password);
   }
 
   @Test
@@ -52,9 +56,12 @@ public class RegistrationManagementTests {
     String username = "sunny";
     String emailAddress = "Sunny@TaskAgile.com";
     String password = "MyPassword!";
+    String firstName = "Sunny";
+    String lastName = "Hu";
 
-    instance.register(username, emailAddress, password);
-    User userToSave = User.create(username, emailAddress.toLowerCase(), password);
+    instance.register(username, emailAddress, firstName, lastName, password);
+    User userToSave = User.create(username, emailAddress.toLowerCase(), firstName, lastName, password);
+
     verify(repositoryMock).save(userToSave);
   }
 
@@ -64,7 +71,9 @@ public class RegistrationManagementTests {
     String emailAddress = "sunny@taskagile.com";
     String password = "MyPassword!";
     String encryptedPassword = "EncryptedPassword";
-    User newUser = User.create(username, emailAddress, encryptedPassword);
+    String firstName = "Sunny";
+    String lastName = "Hu";
+    User newUser = User.create(username, emailAddress, firstName, lastName, encryptedPassword);
 
     // Setup repository mock
     // Return null to indicate no user exists
@@ -74,7 +83,7 @@ public class RegistrationManagementTests {
     // Setup passwordEncryptor mock
     when(passwordEncryptorMock.encrypt(password)).thenReturn("EncryptedPassword");
 
-    User savedUser = instance.register(username, emailAddress, password);
+    User savedUser = instance.register(username, emailAddress, firstName, lastName, password);
     InOrder inOrder = inOrder(repositoryMock);
     inOrder.verify(repositoryMock).findByUsername(username);
     inOrder.verify(repositoryMock).findByEmailAddress(emailAddress);

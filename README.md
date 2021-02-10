@@ -2,7 +2,7 @@
 
 Open source task management tool built with Vue.js 2.4.2, Spring Boot 2, and MySQL 5.7+
 
-# 개발환경 
+## 개발환경 
 
 ### Back-end 
 - Spring-boot v2.0.4.RELEASE    
@@ -15,9 +15,9 @@ Open source task management tool built with Vue.js 2.4.2, Spring Boot 2, and MyS
 * 환경설정 부분은 너무 내용이 많아서 별도 문서에 정리함.
  
 ---
-# Spring Initializer로 Back-end 기본 틀 생성하기
+## Spring Initializer로 Back-end 기본 틀 생성하기
 
-## git
+### git
 1. 먼저 github.com 에 로그이해서 New Repository로 새로운 저장소를 만든다
    - 저장소 명 : skyweb.vuejs.spring-boot.mysql
    - public으로 설정
@@ -33,7 +33,7 @@ Open source task management tool built with Vue.js 2.4.2, Spring Boot 2, and MyS
    - commit : 코멘트 입력 가능
    - push : 최초 push할 때는 인증을 했는데 2번째 부터는 인증없이 push 가능
    
-## Local development
+### Local development
 
 Create `src/main/resources/application-dev.properties` with the following settings to override the settings in `application.properties`.
 
@@ -46,7 +46,7 @@ windows의 경우 활성 프로파일을 application-dev.properties로 설정하
 spring_profiles_active : dev
 unix/rinux의 경우 배시 프로파일에 export spring_profiles_active=dev를 기입
  
-## Commands
+### Commands
 
 - Use `mvn install` to build both the front-end and the back-end
 - Use `mvn test` to run the tests of the back-end and the front-end
@@ -54,7 +54,7 @@ unix/rinux의 경우 배시 프로파일에 export spring_profiles_active=dev를
 - Use `npm run serve` inside the `front-end` directory to start the front-end
 - Use `java -jar target/app-0.0.1-SNAPSHOT.jar` to start the bundled application
 
-## Troubleshooting
+### Troubleshooting
 
 - Spring Initializer로 생성 시 java 11로 생성했더니 오류 발생
   => pom.xml에서 Java Version을 8로 바꾸니 정상적으로 실행되는 것을 보니 현재 환경변수
@@ -65,9 +65,9 @@ unix/rinux의 경우 배시 프로파일에 export spring_profiles_active=dev를
   spring.datasource.url=jdbc:mysql://localhost:3306/task_agile?useSSL=false&useUnicode=true&characterEncoding=UTF-8&serverTimezone=UTC
 
 ---
-# Vue-Cli로 Front-end 기본 틀 생성하기
+## Vue-Cli로 Front-end 기본 틀 생성하기
 
-## 개발 환경
+### 개발 환경
 개발 도구의 버전은 다음과 같다.
 node v10.23.1 + vue/cli v4.5.11
 
@@ -81,7 +81,7 @@ node v10.23.1 + vue/cli v4.5.11
 그리고 개발중에는 크롬 브라우저는 자동 업데이트를 막아 놓아야 한다.
 가능하면 가상PC에 개발환경을 구성하는 것도 좋은 방법이다.   
 
-## 설치 명령어
+### 설치 명령어
 
 vue-cli 설치
 npm install -g @vue/cli
@@ -93,11 +93,11 @@ vue-cli로 front-end 폴더에 front-end 뼈대 생성
 vue create front-end
 
 
-## front-end APP 실행
+### front-end APP 실행
 front-end 폴더에서 
 npm run serve
 
-## Commands
+### Commands
 - npm run serve     : front-end App execute
 - npm run build     : front-end App build
 - npm run test:unit : front-end App unit test
@@ -106,10 +106,10 @@ npm run serve
 - npm run test      : front-end App unit and e2e test"
   npm run test는 npm test로 실행가능
 
-## test(unit/e23 test)
+### test(unit/e23 test)
 npm test
 
-## Troubleshooting
+### Troubleshooting
 현상1 : node version 8.12.0, npm version 6.4.1 인 상태에서 vue-cli로 front-end 뼈대를 
        생성했으나 chromdriver 플러그인에서 오류가 발생함.
        err! failed at the chromedriver@87.0.5 install script
@@ -147,9 +147,9 @@ npm test
        nodel버전이 너무 오래되면 조합에 문제가 발생함.
        
 ---
-# back-end와 front-end 연결하기
+## back-end와 front-end 연결하기
 
-## 하나의 명령어로 빌드하기
+### 하나의 명령어로 빌드하기
 * Maven을 활용하여 통합 빌드
 프런트 엔드를 백앤드의 하위 폴더로 놓았기 때문에 npm을 제어하는데 maven을 활용
 또 다른 이유는 메이븐이 전체 빌드 라이프 사이클에서 효과적으로 활용할 수 있는 다양한 내장 페이즈를 지원하기 때문임.
@@ -160,14 +160,14 @@ Maven Resource Plugin : 프런트 엔드 리소스를 복사
 Spring Boot Maven Plugin : Spring Boot App를 시작하고 종료
 Maven Clean Plugin : 빌드에 영향을 줄 리소스르 제거, ex) 기 빌드된 리소스 제거
 
-## 통합 빌드 실행
+### 통합 빌드 실행
 mvn install
 
 기존 빌드를 깨끗이 삭제하고 빌드(권장)
 mvn clean install
 
 
-# 중요 변경 사항 
+## 중요 변경 사항 
 폼과 검증관련 내용을 진행하다가 현재 작업 중인 app의 spring boot 버전이 2.4.2인 이유로 책과 다른 점이 발견되어 기존 샘플 예제의 버전인 2.0.4로 내림
 최신 버전으로 진행하면서 문제를 해결하는 게 좋은 방향이지만 중간에 시간을 허비하는 것 보다는 일단
 돌아가는 것을 빨리 구현해 보는게 낫다고 판단함.
@@ -184,7 +184,7 @@ Could not find artifact org.springframework.boot:spring-boot-starter-parent:pom:
 TaskAgileApplicationTests.java에서 나는 오류는 해당 버전의 test 패키지가 달라서 나는 오류이므로
 맞춰주면 된다.
 
-## troubleshooting
+### troubleshooting
 * 오류 해결 사항 1, 2는 spring-boot-starter-parent 2.4.2 버전을 사용시 발생하는 오류들임
 1. Validation 관련 테스트 클래스 생성시 javax.validation 패키지를 찾을 수 없다는 아래 메시지 표시
 The import javax.validation cannot be resolved

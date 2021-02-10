@@ -1,8 +1,8 @@
 package com.taskagile.domain.model.board;
 
-import com.taskagile.domain.model.user.UserId;
-
 import java.util.List;
+
+import com.taskagile.domain.model.user.UserId;
 
 public interface BoardRepository {
 
@@ -14,6 +14,14 @@ public interface BoardRepository {
    * @return a list of boards or an empty list if none found
    */
   List<Board> findBoardsByMembership(UserId userId);
+
+  /**
+   * Find board by its id
+   *
+   * @param boardId the id of the board
+   * @return the board instance or null if it doesn't exist
+   */
+  Board findById(BoardId boardId);
 
   /**
    * Save a board

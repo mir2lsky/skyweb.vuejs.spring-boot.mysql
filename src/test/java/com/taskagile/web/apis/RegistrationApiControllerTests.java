@@ -47,6 +47,8 @@ public class RegistrationApiControllerTests {
     payload.setUsername("exist");
     payload.setEmailAddress("test@taskagile.com");
     payload.setPassword("MyPassword!");
+    payload.setFirstName("User");
+    payload.setLastName("Test");
 
     // 아래의 mvc객체를 통해 register()가 호출될 때
     // serviceMock이 UsernameExistsException을 던지도록 설정.
@@ -68,6 +70,8 @@ public class RegistrationApiControllerTests {
     payload.setUsername("test");
     payload.setEmailAddress("exist@taskagile.com");
     payload.setPassword("MyPassword!");
+    payload.setFirstName("User");
+    payload.setLastName("Test");
 
     // 아래의 mvc객체를 통해 register()가 호출될 때
     // serviceMock이 EmailAddressExistsException 을 던지도록 설정.
@@ -89,7 +93,8 @@ public class RegistrationApiControllerTests {
     payload.setUsername("test");
     payload.setEmailAddress("exist@taskagile.com");
     payload.setPassword("MyPassword!");
-
+    payload.setFirstName("User");
+    payload.setLastName("Test");
 
     // 아래의 mvc객체를 통해 register()가 호출될 때 아무런 예외도 발생하지 않도록 설정.
     // 이유는 서비스 메서드의 반환값이 void이고

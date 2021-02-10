@@ -15,8 +15,9 @@ public class RegistrationManagement {
     this.passwordEncryptor = passwordEncryptor;
   }
 
-  public User register(String username, String emailAddress, String password)
-    throws RegistrationException {
+  public User register(String username, String emailAddress,
+                String firstName, String lastName, String password)
+                      throws RegistrationException {
       User existingUser = repository.findByUsername(username);
       if (existingUser != null) {
         throw new UsernameExistsException();
@@ -28,7 +29,7 @@ public class RegistrationManagement {
       }
 
       String encryptedPassword = passwordEncryptor.encrypt(password);
-      User newUser = User.create(username, emailAddress.toLowerCase(), encryptedPassword);
+      User newUser = User.create(username, emailAddress.toLowerCase(), firstName, lastName, encryptedPassword);
       repository.save(newUser);
       return newUser;
   }

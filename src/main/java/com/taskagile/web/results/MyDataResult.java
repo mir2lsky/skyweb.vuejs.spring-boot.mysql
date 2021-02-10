@@ -1,21 +1,21 @@
 package com.taskagile.web.results;
 
-import com.taskagile.domain.model.board.Board;
-import com.taskagile.domain.model.team.Team;
-import com.taskagile.domain.model.user.SimpleUser;
-import org.springframework.http.ResponseEntity;
-
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-@SuppressWarnings("all")
+import com.taskagile.domain.model.board.Board;
+import com.taskagile.domain.model.team.Team;
+import com.taskagile.domain.model.user.User;
+
+import org.springframework.http.ResponseEntity;
+
 public class MyDataResult {
 
-  public static ResponseEntity<ApiResult> build(SimpleUser currentUser, List<Team> teams, List<Board> boards) {
-    Map<String, Object> user = new HashMap<>();
-    user.put("name", currentUser.getUsername());
+  public static ResponseEntity<ApiResult> build(User user, List<Team> teams, List<Board> boards) {
+    Map<String, Object> userData = new HashMap<>();
+    userData.put("name", user.getFirstName() + " " + user.getLastName());
 
     List<TeamResult> teamResults = new ArrayList<>();
     for (Team team : teams) {
@@ -28,13 +28,14 @@ public class MyDataResult {
     }
 
     ApiResult apiResult = ApiResult.blank()
-      .add("user", user)
+      .add("user", userData)
       .add("teams", teamResults)
       .add("boards", boardResults);
 
     return Result.ok(apiResult);
   }
 
+  @SuppressWarnings("unused")
   private static class TeamResult {
 
     private long id;
@@ -54,6 +55,7 @@ public class MyDataResult {
     }
   }
 
+  @SuppressWarnings("unused")
   private static class BoardResult {
     private long id;
     private String name;

@@ -35,6 +35,8 @@ module.exports = {
       .waitForElementVisible('@app', 500)
       .assert.visible('@usernameInput')
       .assert.visible('@emailAddressInput')
+      .assert.visible('@firstNameInput')
+      .assert.visible('@lastNameInput')
       .assert.visible('@passwordInput')
       .assert.visible('@submitButton')
       .assert.hidden('@formError')
@@ -62,7 +64,7 @@ module.exports = {
 
     registerPage
       .navigate()
-      .register(user.username, user.emailAddress, user.password)
+      .register(user.username, user.emailAddress, user.firstName, user.lastName, user.password)
 
     browser.pause(2000)
 

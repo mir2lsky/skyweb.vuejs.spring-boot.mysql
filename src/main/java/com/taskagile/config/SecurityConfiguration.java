@@ -46,7 +46,8 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
           .loginPage("/login")            // 로그인 페이지 경로 설정
       .and()
         .logout()                         // 로그아웃의 동작을 설정
-        .logoutUrl("/logout")             // 로그아웃 경로 설정(default)
+        //.logoutUrl("/logout")           // 로그아웃 경로 설정(default)
+        .logoutUrl("/api/me/logout")      // 로그아웃 경로 변경
         //.logoutSuccessUrl("/login?logged-out")      // 로그아웃 후 리다이렉트되는 경로
         .logoutSuccessHandler(logoutSuccessHandler()) // 상기 logoutSuccessUrl은 logoutSuccessHandlerf로 대체함
       .and()
