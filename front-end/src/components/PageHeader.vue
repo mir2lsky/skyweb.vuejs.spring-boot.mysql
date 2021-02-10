@@ -69,9 +69,15 @@ export default {
       'teamBoards'
     ])
   },
-  created () {
-    // Vue 인스턴스의 created 라이프 사이클 훅
-    this.$store.dispatch('getMyData')
+  // RealTime Client 기능 추가로 제거됨.
+  // created () {
+  //   // Vue 인스턴스의 created 라이프 사이클 훅
+  //   this.$store.dispatch('getMyData')
+  // },
+  mounted () {
+    if (!this.user.authenticated) {
+      this.$store.dispatch('getMyData')
+    }
   },
   methods: {
     goHome () {
@@ -81,7 +87,10 @@ export default {
       this.$router.push({ name: 'board', params: { boardId: board.id } })
     },
     signOut () {
+      this.$rt.logout()
+
       meService.signOut().then(() => {
+        this.$store.dispatch('logout')
         this.$router.push({ name: 'login' })
       }).catch(error => {
         notify.error(error.message)

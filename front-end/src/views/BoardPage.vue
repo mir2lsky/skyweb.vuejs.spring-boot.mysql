@@ -124,12 +124,12 @@ export default {
   },
   beforeRouteUpdate (to, from, next) {
     next()
-    // this.unsubscribeFromRealTimeUpdate()
+    this.unsubscribeFromRealTimeUpdate()
     this.loadBoard()
   },
   beforeRouteLeave (to, from, next) {
     next()
-    // this.unsubscribeFromRealTimeUpdate()
+    this.unsubscribeFromRealTimeUpdate()
   },
   mounted () {
     this.$el.addEventListener('click', this.dismissActiveForms)
@@ -176,7 +176,8 @@ export default {
             }
           })
         })
-        // this.subscribeToRealTimUpdate()
+        // RealTime Client 구독 신청
+        this.subscribeToRealTimUpdate()
       }).catch(error => {
         notify.error(error.message)
       })
@@ -327,18 +328,21 @@ export default {
         notify.error(error.message)
       })
     },
-    // subscribeToRealTimUpdate () {
-    //   this.$rt.subscribe('/board/' + this.board.id, this.onRealTimeUpdated)
-    // },
-    // unsubscribeFromRealTimeUpdate () {
-    //   this.$rt.unsubscribe('/board/' + this.board.id, this.onRealTimeUpdated)
-    // },
-    // onRealTimeUpdated (update) {
-    //   console.log('[BoardPage] Real time update received', update)
-    //   if (update.type === 'cardAdded') {
-    //     this.onCardAdded(update.card)
-    //   }
-    // },
+    // === RealTime Client 관련 method
+    subscribeToRealTimUpdate () {
+      // RealTime Client 구독 등록(이벤트 버스)
+      this.$rt.subscribe('/board/' + this.board.id, this.onRealTimeUpdated)
+    },
+    unsubscribeFromRealTimeUpdate () {
+      // RealTime Client 구독 해지 등록(이벤트 버스)
+      this.$rt.unsubscribe('/board/' + this.board.id, this.onRealTimeUpdated)
+    },
+    onRealTimeUpdated (update) {
+      console.log('[BoardPage] Real time update received', update)
+      if (update.type === 'cardAdded') {
+        this.onCardAdded(update.card)
+      }
+    },
     onCardAdded (card) {
       const cardList = this.cardLists.filter(cardList => { return cardList.id === card.cardListId })[0]
       if (!cardList) {

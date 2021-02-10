@@ -8,7 +8,16 @@
 import 'bootstrap/dist/js/bootstrap.min'
 
 export default {
-  name: 'App'
+  name: 'App',
+  created () {
+    // 이벤트 버스에 myDataFetched 이벤트를 등록, 실제 실행은 me서비스의
+    // getMyData 메서드의 성공 callback처리에서 myDataFetched가 호출될 때
+    // 발생함.
+    this.$bus.$on('myDataFetched', myData => {
+      // Initializing the real time connection
+      this.$rt.init(myData.settings.realTimeServerUrl, myData.user.token)
+    })
+  }
 }
 </script>
 

@@ -87,7 +87,9 @@ public class SimpleUser implements UserDetails {
     return "SimpleUser {" +
       "userId=" + userId +
       ", username='" + username + '\'' +
-      ", password='" + password + '\'' + '}';
+    //  ", password='" + password + '\'' +
+      ", password=[Protected]" +
+      '}';
   }
 
 

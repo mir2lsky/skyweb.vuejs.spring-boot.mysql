@@ -36,14 +36,14 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
     http
       .exceptionHandling().accessDeniedHandler(accessDeniedHandler())
       .and()
-      .authorizeRequests()                //  http 요청에 기반한 접근 제한임을 알림
+        .authorizeRequests()                //  http 요청에 기반한 접근 제한임을 알림
         .antMatchers(PUBLIC).permitAll()  // 누구나 허용되는 경로 설정
         .anyRequest().authenticated()     // PUBLIC외 다른 요청은 인증된 사용자만 접근 가능
       .and()                              // 메소드 호출 체인읠 http 객체로 복원
         // UsernamePasswordAuthenticationFilter를 AuthenticationFilter로 대체
         .addFilterAt(authenticationFilter(), UsernamePasswordAuthenticationFilter.class)
         .formLogin()                      // App가 form 기반 인증 설정
-          .loginPage("/login")            // 로그인 페이지 경로 설정
+        .loginPage("/login")            // 로그인 페이지 경로 설정
       .and()
         .logout()                         // 로그아웃의 동작을 설정
         //.logoutUrl("/logout")           // 로그아웃 경로 설정(default)

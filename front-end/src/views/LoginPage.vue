@@ -78,6 +78,8 @@ export default {
 
       authenticationService.authenticate(this.form).then(() => {
         this.$router.push({ name: 'home' })
+        // 이벤트 버스의 authenticated 이벤트를 호출
+        this.$bus.$emit('authenticated')
       }).catch((error) => {
         this.errorMessage = error.message
       })

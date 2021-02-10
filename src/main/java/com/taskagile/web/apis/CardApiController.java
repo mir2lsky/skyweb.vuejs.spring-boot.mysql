@@ -9,6 +9,7 @@ import com.taskagile.web.payload.ChangeCardPositionsPayload;
 import com.taskagile.web.results.AddCardResult;
 import com.taskagile.web.results.ApiResult;
 import com.taskagile.web.results.Result;
+import com.taskagile.web.updater.CardUpdater;
 
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
@@ -19,15 +20,19 @@ import org.springframework.web.bind.annotation.RequestBody;
 public class CardApiController {
 
   private CardService cardService;
+  private CardUpdater cardUpdater;
 
-  public CardApiController(CardService cardService) {
+  public CardApiController(CardService cardService, CardUpdater cardUpdater) {
     this.cardService = cardService;
+    this.cardUpdater = cardUpdater;
   }
 
   @PostMapping("/api/cards")
   public ResponseEntity<ApiResult> addCard(@RequestBody AddCardPayload payload,
                                            @CurrentUser SimpleUser currentUser) {
     Card card = cardService.addCard(payload.toCommand(currentUser.getUserId()));
+    // 카드가 추가될 때 RealTime Client를 업데이트 처리
+    cardUpdater.onCardAdded(payload.getBoardId(), card);
     return AddCardResult.build(card);
   }
 

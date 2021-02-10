@@ -10,4 +10,7 @@ public class UserId extends AbstractBaseId {
     super(id);
   }
 
+  public String toString() {
+    return String.valueOf(value());
+  }
 }
