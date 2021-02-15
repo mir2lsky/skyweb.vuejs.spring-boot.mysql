@@ -8,6 +8,7 @@ import javax.persistence.EntityManager;
 
 import com.taskagile.domain.model.board.BoardId;
 import com.taskagile.domain.model.card.Card;
+import com.taskagile.domain.model.card.CardId;
 import com.taskagile.domain.model.card.CardPosition;
 import com.taskagile.domain.model.card.CardRepository;
 
@@ -24,6 +25,11 @@ public class HibernateCardRepository extends HibernateSupport<Card> implements C
   HibernateCardRepository(EntityManager entityManager, JdbcTemplate jdbcTemplate) {
     super(entityManager);
     this.jdbcTemplate = jdbcTemplate;
+  }
+
+  @Override
+  public Card findById(CardId cardId) {
+    return getSession().find(Card.class, cardId.value());
   }
 
   @Override

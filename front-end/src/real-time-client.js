@@ -16,6 +16,8 @@ class RealTimeClient {
     this.authenticated = false
     // 사용자가 로그아웃했고 그로 인해 실시간 클라이언트가 종료됐는지 여부
     this.loggedOut = false
+    // 시도 횟수
+    this.triedAttempts = 0
     // Vue 인스턴스의 하나로 실시간 클라이언트의 내부 이벤트 버스로 사용
     this.$bus = new Vue()
 
@@ -150,6 +152,7 @@ class RealTimeClient {
   }
 
   _onConnected () {
+    this.triedAttempts = 0
     globalBus.$emit('RealTimeClient.connected')
     console.log('[RealTimeClient] Connected')
 
@@ -181,11 +184,16 @@ class RealTimeClient {
       console.log('[RealTimeClient] Logged out')
       globalBus.$emit('RealTimeClient.loggedOut')
     } else {
+      if (this.triedAttempts > 30) {
+        console.log('[RealTimeClient] Fail to connect to the server')
+        return
+      }
       // Temporarily disconnected, attempt reconnect
       console.log('[RealTimeClient] Disconnected')
       globalBus.$emit('RealTimeClient.disconnected')
 
       setTimeout(() => {
+        this.triedAttempts++
         console.log('[RealTimeClient] Reconnecting')
         globalBus.$emit('RealTimeClient.reconnecting')
         this.connect()

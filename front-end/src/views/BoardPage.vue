@@ -1,6 +1,6 @@
 <template>
   <!-- Page Container -->
-  <div class="page">
+  <div class="page" v-show="board.id">
     <!-- Page Header -->
     <PageHeader />
     <!-- Page Body -->
@@ -47,7 +47,7 @@
                       animation: 0, scrollSensitivity: 100, touchStartThreshold: 20}"
                       v-bind:data-list-id="cardList.id">
                     <!-- Card Item (List) -->
-                    <div class="card-item" v-for="card in cardList.cards" v-bind:key="card.id">
+                    <div class="card-item" v-for="card in cardList.cards" v-bind:key="card.id" @click="openCard(card)">
                       <div class="card-title">{{ card.title }}</div>
                     </div>
                     <!-- Add Card Form -->
@@ -85,6 +85,11 @@
     <AddMemberModal
       :boardId="board.id"
       @added="onMemberAdded"/>
+    <CardModal
+      :card="openedCard"
+      :cardList="focusedCardList"
+      :board="board"
+      :members="members" />
   </div>
 </template>
 
@@ -93,6 +98,7 @@ import draggable from 'vuedraggable'
 import $ from 'jquery'
 import PageHeader from '@/components/PageHeader.vue'
 import AddMemberModal from '@/modals/AddMemberModal.vue'
+import CardModal from '@/modals/CardModal.vue'
 import notify from '@/utils/notify'
 import boardService from '@/services/boards'
 import cardListService from '@/services/card-lists'
@@ -109,77 +115,210 @@ export default {
       addListForm: {
         open: false,
         name: ''
-      }
+      },
+      // CardModal.vue 컴포넌트에 전달할 카드 정보
+      openedCard: {}
+    }
+  },
+  computed: {
+    focusedCardList () {
+      return this.cardLists.filter(cardList => cardList.id === this.openedCard.cardListId)[0] || {}
     }
   },
   components: {
     PageHeader,
     AddMemberModal,
+    CardModal,
     draggable
   },
-  beforeRouteEnter (to, from, next) {
-    next(vm => {
-      vm.loadBoard()
-    })
-  },
-  beforeRouteUpdate (to, from, next) {
-    next()
-    this.unsubscribeFromRealTimeUpdate()
-    this.loadBoard()
+  // --- beforeRouteEnter와 beforeRouteUpdate 네비게이션 가드 제거 ---
+  // 카드 모달창을 처리하기 위해 보드 URL과 카드 URL 두 경로를 BoardPage 컴포넌트로 매핑하기 때문에
+  // vue-roter라이브러리가 beforeRouteUpdate 가드를 호출하지 않으므로 아래의
+  // beforeRouteEnter와 beforeRouteUpdate가 경로의 변경사항을 감지할 수 없다.
+  // 예를 들면, /board/1에서 /board/2로 이동할 경우는 감지하지만, /board/1에서 /card/1/card-titie로
+  // 이동할 경우에는 감지되어 호출되지 않는다.
+  // 그러므로 BoardPage에 머물때 경로의 변경사항을 감지하기 위해서는 네비게이션 가드에 의존할 수 없고
+  // 아래와 같이 this.$route 객체를 watcher를 활용하여 지켜봐야 한다.
+  // 단, beforeRouteLeave가드는 BoardPage에서 나가는 것을 감지하기 때문에 여전히 유효하다.
+  // beforeRouteEnter (to, from, next) {
+  //   next(vm => {
+  //     vm.loadBoard()
+  //   })
+  // },
+  // beforeRouteUpdate (to, from, next) {
+  //   next()
+  //   this.unsubscribeFromRealTimeUpdate()
+  //   this.loadBoard()
+  // },
+  watch: {
+    // to.name과 form.name을 이용해 보드간의 전환, 카드열기, 카드 닫기의 3개 시나리오를 감지
+    '$route' (to, from) {
+      // Switch from one board to another
+      if (to.name === from.name && to.name === 'board') {
+        this.unsubscribeFromRealTimeUpdate(from.params.boardId)
+        this.loadBoard(to.params.boardId)
+      }
+      // Open a card
+      if (to.name === 'card' && from.name === 'board') {
+        this.loadCard(to.params.cardId).then(() => {
+          this.openCardWindow()
+        })
+      }
+      // Close a card
+      if (to.name === 'board' && from.name === 'card') {
+        this.closeCardWindow()
+        this.openedCard = {}
+      }
+    }
   },
   beforeRouteLeave (to, from, next) {
+    console.log('[BoardPage] Before route leave')
     next()
-    this.unsubscribeFromRealTimeUpdate()
+    this.unsubscribeFromRealTimeUpdate(this.board.id)
   },
   mounted () {
+    // 사용자가 보드 URL이나 카드 URL을 바로 열 경우 또는 페이지를 새로 고칠 경우
+    // 보드 페이지의 데이터 로딩을 시작
+    console.log('[BoardPage] Mouted')
+    this.loadInitial() // 서버로 부터 데이터를 로드
+
     this.$el.addEventListener('click', this.dismissActiveForms)
+
+    // 카드 모달 창을 닫으면 보드 URL로 돌아간다.
+    $('#cardModal').on('hide.bs.modal', () => {
+      this.$router.push({ name: 'board', params: { boardId: this.board.id } })
+    })
   },
   beforeDestroy () {
     this.$el.removeEventListener('click', this.dismissActiveForms)
   },
   methods: {
-    loadBoard () {
-      console.log('[BoardPage] Loading board')
-      boardService.getBoard(this.$route.params.boardId).then(data => {
-        this.team.name = data.team ? data.team.name : ''
-        this.board.id = data.board.id
-        this.board.personal = data.board.personal
-        this.board.name = data.board.name
+    // --- beforeRouteEnter와 beforeRouteUpdate 네비게이션 가드 제거에 따른 제거 처리 ---
+    // loadBoard () {
+    //   console.log('[BoardPage] Loading board')
+    //   boardService.getBoard(this.$route.params.boardId).then(data => {
+    //     this.team.name = data.team ? data.team.name : ''
+    //     this.board.id = data.board.id
+    //     this.board.personal = data.board.personal
+    //     this.board.name = data.board.name
 
-        this.members.splice(0) // array clear
+    //     this.members.splice(0) // array clear
 
-        data.members.forEach(member => {
-          this.members.push({
-            id: member.userId,
-            shortName: member.shortName
-          })
+    //     data.members.forEach(member => {
+    //       this.members.push({
+    //         id: member.userId,
+    //         shortName: member.shortName
+    //       })
+    //     })
+
+    //     this.cardLists.splice(0)
+
+    //     data.cardLists.sort((list1, list2) => {
+    //       return list1.position - list2.position
+    //     })
+
+    //     data.cardLists.forEach(cardList => {
+    //       cardList.cards.sort((card1, card2) => {
+    //         return card1.position - card2.position
+    //       })
+
+    //       this.cardLists.push({
+    //         id: cardList.id,
+    //         name: cardList.name,
+    //         cards: cardList.cards,
+    //         cardForm: {
+    //           open: false,
+    //           title: ''
+    //         }
+    //       })
+    //     })
+    //     // RealTime Client 구독 신청
+    //     this.subscribeToRealTimUpdate()
+    //   }).catch(error => {
+    //     notify.error(error.message)
+    //   })
+    // },
+    loadInitial () {
+      // The board page can be opened through a card URL.
+      if (this.$route.params.cardId) {
+        // 카드 URL이면
+        console.log('[BoardPage] Opened with card URL')
+        // loadCard를 호출하여 카드를 서버로부터 가져오면
+        this.loadCard(this.$route.params.cardId).then(card => {
+          // 가져온 카드의 보드 id를 이용하여 보드를 로드하고
+          return this.loadBoard(card.boardId)
+        }).then(() => {
+          // 보드가 로드되면 카드 모달창을 오픈
+          this.openCardWindow()
         })
-
-        this.cardLists.splice(0)
-
-        data.cardLists.sort((list1, list2) => {
-          return list1.position - list2.position
+      } else {
+        // 보드 URL이면
+        console.log('[BoardPage] Opened with board URL')
+        this.loadBoard(this.$route.params.boardId)
+      }
+    },
+    loadCard (cardId) {
+      // 서버로 부터 카드 정보를 취득
+      return new Promise(resolve => {
+        console.log('[BoardPage] Loading card ' + cardId)
+        cardService.getCard(cardId).then(card => {
+          // 성공하면 서버에서 취득한 카드정보를 openedCard 프로퍼티에 할당
+          // openedCard 프로퍼티는 카드정보를 앞으로 만들 CardModal.vue 컴포넌트에 전달하기 위해 사용된다.
+          this.openedCard = card
+          // 메서드 호출을 연결하기 위해 프로미스를 반환(취득한 카드 정보를 다음 메서드에 넘김)
+          resolve(card)
+        }).catch(error => {
+          notify.error(error.message)
         })
+      })
+    },
+    loadBoard (boardId) {
+      // 서버로 부터 카드 정보를 취득
+      return new Promise(resolve => {
+        console.log('[BoardPage] Loading board ' + boardId)
+        boardService.getBoard(boardId).then(data => {
+          this.team.name = data.team ? data.team.name : ''
+          this.board.id = data.board.id
+          this.board.personal = data.board.personal
+          this.board.name = data.board.name
 
-        data.cardLists.forEach(cardList => {
-          cardList.cards.sort((card1, card2) => {
-            return card1.position - card2.position
+          this.members.splice(0)
+
+          data.members.forEach(member => {
+            this.members.push({
+              id: member.userId,
+              name: member.name,
+              shortName: member.shortName
+            })
           })
 
-          this.cardLists.push({
-            id: cardList.id,
-            name: cardList.name,
-            cards: cardList.cards,
-            cardForm: {
-              open: false,
-              title: ''
-            }
+          this.cardLists.splice(0)
+
+          data.cardLists.sort((list1, list2) => {
+            return list1.position - list2.position
           })
+
+          data.cardLists.forEach(cardList => {
+            cardList.cards.sort((card1, card2) => {
+              return card1.position - card2.position
+            })
+
+            this.cardLists.push({
+              id: cardList.id,
+              name: cardList.name,
+              cards: cardList.cards,
+              cardForm: {
+                open: false,
+                title: ''
+              }
+            })
+          })
+          this.subscribeToRealTimUpdate(data.board.id)
+          // 메서드 호출을 연결하기 위해 프로미스를 반환
+          resolve()
+        }).catch(error => {
+          notify.error(error.message)
         })
-        // RealTime Client 구독 신청
-        this.subscribeToRealTimUpdate()
-      }).catch(error => {
-        notify.error(error.message)
       })
     },
     dismissActiveForms (event) {
@@ -329,13 +468,13 @@ export default {
       })
     },
     // === RealTime Client 관련 method
-    subscribeToRealTimUpdate () {
+    subscribeToRealTimUpdate (boardId) {
       // RealTime Client 구독 등록(이벤트 버스)
-      this.$rt.subscribe('/board/' + this.board.id, this.onRealTimeUpdated)
+      this.$rt.subscribe('/board/' + boardId, this.onRealTimeUpdated)
     },
-    unsubscribeFromRealTimeUpdate () {
+    unsubscribeFromRealTimeUpdate (boardId) {
       // RealTime Client 구독 해지 등록(이벤트 버스)
-      this.$rt.unsubscribe('/board/' + this.board.id, this.onRealTimeUpdated)
+      this.$rt.unsubscribe('/board/' + boardId, this.onRealTimeUpdated)
     },
     onRealTimeUpdated (update) {
       console.log('[BoardPage] Real time update received', update)
@@ -362,6 +501,18 @@ export default {
           title: card.title
         })
       }
+    },
+    openCard (card) {
+      const titlePart = card.title.toLowerCase().trim().replace(/\s/g, '-')
+      this.$router.push({ name: 'card', params: { cardId: card.id, cardTitle: titlePart } })
+    },
+    openCardWindow () {
+      console.log('[BoardPage] Open card window ' + this.openedCard.id)
+      $('#cardModal').modal('show')
+    },
+    closeCardWindow () {
+      console.log('[BoardPage] Close card window ' + this.openedCard.id)
+      $('#cardModal').modal('hide')
     }
   }
 }
@@ -542,7 +693,16 @@ export default {
 
                   .card-title {
                     margin: 0;
+
+                    a {
+                      color: #333;
+                      text-decoration: none;
+                    }
                   }
+                }
+
+                .card-item:hover {
+                  background: #ddd;
                 }
 
                 .ghost-card {

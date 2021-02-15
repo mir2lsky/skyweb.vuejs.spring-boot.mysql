@@ -8,6 +8,9 @@ module.exports = {
       },
       '/rt/*': {
         target: 'http://localhost:8080'
+      },
+      '/local-file/*': {
+        target: 'http://localhost:8080'
       }
     }
   },
@@ -15,7 +18,10 @@ module.exports = {
     entry: {
       app: './src/main.js',
       style: [
-        'bootstrap/dist/css/bootstrap.min.css'
+        'bootstrap/dist/css/bootstrap.min.css',
+        'blueimp-file-upload/css/jquery.fileupload.css',
+        'noty/lib/noty.css',
+        'noty/lib/themes/relax.css'
       ]
     }
   }

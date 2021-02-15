@@ -10,6 +10,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
+import org.springframework.web.multipart.MaxUploadSizeExceededException;
 import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExceptionHandler;
 
 @ControllerAdvice
@@ -23,4 +24,10 @@ public class ApiExceptionHandler extends ResponseEntityExceptionHandler {
     log.error("Unhandled exception error [code=" + errorReferenceCode + "]", ex);
     return Result.serverError("Sorry, there is an error on the server side.", errorReferenceCode);
   }
+
+  @ExceptionHandler({MaxUploadSizeExceededException.class})
+  protected ResponseEntity<ApiResult> handle(MaxUploadSizeExceededException ex) {
+    return Result.failure("File exceeded maximum size limit");
+  }
+
 }

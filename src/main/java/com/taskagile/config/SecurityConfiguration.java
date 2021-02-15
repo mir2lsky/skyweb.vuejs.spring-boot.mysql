@@ -1,6 +1,7 @@
 package com.taskagile.config;
 
 import com.taskagile.domain.common.security.AccessDeniedHandlerImpl;
+import com.taskagile.domain.common.security.ApiRequestAccessDeniedExceptionTranslationFilter;
 import com.taskagile.web.apis.authenticate.AuthenticationFilter;
 import com.taskagile.web.apis.authenticate.SimpleAuthenticationFailureHandler;
 import com.taskagile.web.apis.authenticate.SimpleAuthenticationSuccessHandler;
@@ -14,6 +15,7 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.access.AccessDeniedHandler;
+import org.springframework.security.web.access.ExceptionTranslationFilter;
 import org.springframework.security.web.authentication.AuthenticationFailureHandler;
 import org.springframework.security.web.authentication.AuthenticationSuccessHandler;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
@@ -42,6 +44,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
       .and()                              // 메소드 호출 체인읠 http 객체로 복원
         // UsernamePasswordAuthenticationFilter를 AuthenticationFilter로 대체
         .addFilterAt(authenticationFilter(), UsernamePasswordAuthenticationFilter.class)
+        .addFilterAfter(apiRequestExceptionTranslationFilter(), ExceptionTranslationFilter.class)
         .formLogin()                      // App가 form 기반 인증 설정
         .loginPage("/login")            // 로그인 페이지 경로 설정
       .and()
@@ -100,4 +103,9 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
   public AccessDeniedHandler accessDeniedHandler() {
     return new AccessDeniedHandlerImpl();
   }
+
+  public ApiRequestAccessDeniedExceptionTranslationFilter apiRequestExceptionTranslationFilter() {
+    return new ApiRequestAccessDeniedExceptionTranslationFilter();
+  }
+
 }

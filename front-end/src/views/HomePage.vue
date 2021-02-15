@@ -106,6 +106,7 @@ export default {
     margin: 30px 10px;
 
     .boards {
+       margin-top: -20px;
 
       .board {
         width: 270px;
@@ -115,6 +116,7 @@ export default {
         color: #fff;
         padding: 15px;
         margin-right: 10px;
+        margin-top: 20px;
         cursor: pointer;
 
         h3 {

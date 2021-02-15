@@ -1,6 +1,8 @@
 package com.taskagile.domain.model.card;
 
 import com.taskagile.domain.common.model.AbstractBaseEntity;
+import com.taskagile.domain.model.board.BoardId;
+import com.taskagile.domain.model.cardlist.CardList;
 import com.taskagile.domain.model.cardlist.CardListId;
 import com.taskagile.domain.model.user.UserId;
 
@@ -17,6 +19,10 @@ public class Card extends AbstractBaseEntity {
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   private Long id;
+
+  // refactoring 단게에서 Activity관련해서 추가된 컬럼
+  @Column(name = "board_id")
+  private long boardId;
 
   @Column(name = "card_list_id")
   private long cardListId;
@@ -40,9 +46,12 @@ public class Card extends AbstractBaseEntity {
   @Column(name = "created_date", nullable = false)
   private Date createdDate;
 
-  public static Card create(CardListId cardListId, UserId userId, String title, int position) {
-    Card card = new Card();
-    card.cardListId = cardListId.value();
+  //public static Card create(CardListId cardListId, UserId userId, String title, int position) {
+  public static Card create(CardList cardList, UserId userId, String title, int position) {
+      Card card = new Card();
+    //card.cardListId = cardListId.value();
+    card.boardId = cardList.getBoardId().value();
+    card.cardListId = cardList.getId().value();
     card.userId = userId.value();
     card.title = title;
     card.description = "";
@@ -52,8 +61,20 @@ public class Card extends AbstractBaseEntity {
     return card;
   }
 
+  public void changeTitle(String title) {
+    this.title = title;
+  }
+
+  public void changeDescription(String description) {
+    this.description = description;
+  }
+
   public CardId getId() {
     return new CardId(id);
+  }
+
+  public BoardId getBoardId() {
+    return new BoardId(boardId);
   }
 
   public CardListId getCardListId() {
@@ -105,6 +126,7 @@ public class Card extends AbstractBaseEntity {
   public String toString() {
     return "Card {" +
       "id=" + id +
+      ", boardId=" + boardId +
       ", cardListId=" + cardListId +
       ", userId=" + userId +
       ", title='" + title + '\'' +

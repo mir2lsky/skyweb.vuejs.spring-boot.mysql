@@ -26,5 +26,10 @@ export default new VueRouter({
     path: '/board/:boardId',
     name: 'board',
     component: BoardPage
+  }, {
+    path: '/card/:cardId/:cardTitle',
+    name: 'card',
+    // 카드 url로 가는 요청은 BoardPage에서 처리
+    component: BoardPage
   }]
 })

@@ -22,6 +22,7 @@ public final class SubscriptionHub {
   // The key is the session id, value is a set of subscribed channels
   private static final Map<String, Set<String>> subscribedChannels = new HashMap<>();
 
+  // 구독하기
   public static void subscribe(RealTimeSession session, String channel) {
     Assert.hasText(channel, "Parameter `channel` must not be null");
 
@@ -36,6 +37,7 @@ public final class SubscriptionHub {
     channels.add(channel);
   }
 
+  // 구독 해제
   public static void unsubscribe(RealTimeSession session, String channel) {
     Assert.hasText(channel, "Parameter `channel` must not be empty");
     Assert.notNull(session, "Parameter `session` must not be null");
